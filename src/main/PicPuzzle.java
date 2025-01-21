@@ -19,7 +19,7 @@ public class PicPuzzle{
 
         //Label 1 & 2
         lbl1 = new JLabel("Click for change icon ->");
-        lbl2 = new JLabel("Click for change picture");
+        lbl2 = new JLabel("Click for change picture ↑");
 
         //Right Icon
         icon = new JButton();
@@ -105,6 +105,7 @@ public class PicPuzzle{
         frm.setSize(750, 700);
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frm.setResizable(false);    
+        frm.setLocation(300, 80);
         frm.setVisible(true);
     }
 }
