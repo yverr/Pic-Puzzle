@@ -1,4 +1,4 @@
-package main;
+// package main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,12 +9,26 @@ public class PicPuzzle{
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
     JButton icon, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, picture;
 
+    Icon s;
+    Icon sami0 = new ImageIcon(".src/res/images/sami.jpg");
+    Icon icon1 = new ImageIcon("./src/res/images/1.jpg");
+    Icon icon2 = new ImageIcon("./src/res/images/2.jpg");
+    Icon icon3 = new ImageIcon("./src/res/images/3.jpg");
+    Icon icon4 = new ImageIcon("./src/res/images/4.jpg");
+    Icon icon5 = new ImageIcon("./src/res/images/5.jpg");
+    Icon icon6 = new ImageIcon("./src/res/images/6.jpg");
+    Icon icon7 = new ImageIcon("./src/res/images/7.jpg");
+    Icon icon8 = new ImageIcon("./src/res/images/8.jpg");
+    Icon icon9 = new ImageIcon("./src/res/images/9.jpg");
+    Icon pic = new ImageIcon("./src/res/images/flowercat.jpg");
+
+
     public PicPuzzle(){
 
         //top panel, center panel container: main panel 
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());    
-        mainPanel.setSize(950, 700);
+        // mainPanel.setSize(1950, 1200);
         mainPanel.setBackground(Color.RED);
 
         //Label 1 & 2
@@ -24,7 +38,8 @@ public class PicPuzzle{
 
         //Right Icon
         icon = new JButton();
-        icon.setPreferredSize(new Dimension(30, 30));   
+        icon.setIcon(icon8);
+        icon.setPreferredSize(new Dimension(90, 90));   
 
         //Wrap the text para hindi siya mag compress sa west
         JPanel topWrapper = new JPanel(new GridBagLayout());
@@ -33,24 +48,37 @@ public class PicPuzzle{
         //lbl1 and icon container: top panel
         topPanel = new JPanel(new BorderLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(15,50,0,50));
-        topPanel.add(topWrapper, BorderLayout.WEST);
+        topPanel.add(topWrapper, BorderLayout.CENTER);
         topPanel.add(icon, BorderLayout.EAST);
-
+        
         //buttons
-        btn1 = new JButton();
-        btn2 = new JButton();
-        btn3 = new JButton();
-        btn4 = new JButton();
-        btn5 = new JButton();
-        btn6 = new JButton();
-        btn7 = new JButton();
-        btn8 = new JButton();
-        btn9 = new JButton();
+        btn1 = new JButton(icon1);
+        btn2 = new JButton(icon2);
+        btn3 = new JButton(icon3);
+        btn4 = new JButton(icon4);
+        btn5 = new JButton(icon5);
+        btn6 = new JButton(icon6);
+        btn7 = new JButton(icon7);
+        btn8 = new JButton(icon8);
+        btn9 = new JButton(icon9);
         picture = new JButton();
+
+        int w = icon1.getIconWidth();
+        int h = icon1.getIconHeight();
+
+        btn1.setPreferredSize(new Dimension(w, h));
+        btn2.setPreferredSize(new Dimension(w, h));
+        btn3.setPreferredSize(new Dimension(w, h)); 
+        btn4.setPreferredSize(new Dimension(w, h));
+        btn5.setPreferredSize(new Dimension(w, h));
+        btn6.setPreferredSize(new Dimension(w, h));
+        btn7.setPreferredSize(new Dimension(w, h));
+        btn8.setPreferredSize(new Dimension(w, h));
+        btn9.setPreferredSize(new Dimension(w, h));
 
         //buttons container: left panel
         leftPanel = new  JPanel();
-        leftPanel.setLayout(new GridLayout(3, 3));
+        leftPanel.setLayout(new GridLayout(3, 3, -2, -2));
         leftPanel.setPreferredSize(new Dimension(200, 200));        
         leftPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));
 
@@ -66,8 +94,8 @@ public class PicPuzzle{
         leftPanel.add(btn9);
 
         //picture    
-        picture = new JButton();
-        picture.setPreferredSize(new Dimension(200, 200));  
+        picture = new JButton(pic);
+        picture.setPreferredSize(new Dimension(pic.getIconWidth(), pic.getIconHeight()));  
 
         //picture container: right panel 
         rightPanel = new JPanel();  
@@ -75,7 +103,6 @@ public class PicPuzzle{
         rightPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));  
         rightPanel.add(picture, BorderLayout.CENTER);   
                 
-
         //wrapping the text para hindi siya mag compress sa taas(idk ayaw niya mapunta sa taas pag wala wrapper and gridbaglayout)
         JPanel leftWrapper = new JPanel(new GridBagLayout());
 
@@ -98,16 +125,16 @@ public class PicPuzzle{
         mainPanel.add(centerPanel, BorderLayout.CENTER);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
            
-
         //add to frame
         frm.add(mainPanel);
 
         //frame properties  
         frm.setTitle("PicPuzzle");
-        frm.setSize(1150, 750);
+        // frm.setSize(1150, 750);
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frm.setResizable(true);    
-        frm.setLocation(300, 80);
+        frm.setResizable(false);    
+        frm.setLocation(150, 35);
+        frm.pack();
         frm.setVisible(true);
     }
 }
