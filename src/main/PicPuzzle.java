@@ -38,7 +38,7 @@ public class PicPuzzle{
 
         //Right Icon
         icon = new JButton();
-        icon.setIcon(icon8);
+        icon.setIcon(sami0);
         icon.setPreferredSize(new Dimension(90, 90));   
 
         //Wrap the text para hindi siya mag compress sa west
@@ -63,9 +63,11 @@ public class PicPuzzle{
         btn9 = new JButton(icon9);
         picture = new JButton();
 
+        //setting preffered size for buttons
         int w = icon1.getIconWidth();
         int h = icon1.getIconHeight();
 
+        //w = getIconWidth, h = getIconHeight
         btn1.setPreferredSize(new Dimension(w, h));
         btn2.setPreferredSize(new Dimension(w, h));
         btn3.setPreferredSize(new Dimension(w, h)); 
@@ -136,5 +138,16 @@ public class PicPuzzle{
         frm.setLocation(150, 35);
         frm.pack();
         frm.setVisible(true);
+
+        //Action Listener
+        ButtonListener e = new ButtonListener();
+
+        icon.addActionListener(e); picture.addActionListener(e);
+        
+        btn1.addActionListener(e); btn2.addActionListener(e);
+        btn3.addActionListener(e); btn4.addActionListener(e);
+        btn5.addActionListener(e); btn6.addActionListener(e);
+        btn7.addActionListener(e); btn8.addActionListener(e);
+        btn9.addActionListener(e); 
     }
 }
