@@ -48,7 +48,7 @@ public class PicPuzzle implements ActionListener{
     Icon pic3 = new ImageIcon("./src/res/images/yui.jpg");
 
     Icon icon28 = new ImageIcon("./src/res/images/28.jpg");
-    Icon icon29 = new ImageIcon("./src/res/images/20.jpg");
+    Icon icon29 = new ImageIcon("./src/res/images/29.jpg");
     Icon icon30 = new ImageIcon("./src/res/images/30.jpg");
     Icon icon31 = new ImageIcon("./src/res/images/31.jpg");
     Icon icon32 = new ImageIcon("./src/res/images/32.jpg");
@@ -67,7 +67,7 @@ public class PicPuzzle implements ActionListener{
     Icon icon43 = new ImageIcon("./src/res/images/43.jpg");
     Icon icon44 = new ImageIcon("./src/res/images/44.jpg");
     Icon icon45 = new ImageIcon("./src/res/images/45.jpg");
-    Icon pic5 = new ImageIcon("./src/res/images/pika.jpg");
+    Icon pic5 = new ImageIcon("./src/res/images/cat.jpg");
 
     public PicPuzzle(){
 
@@ -81,7 +81,7 @@ public class PicPuzzle implements ActionListener{
 
         //Label 1 & 2
         lbl1 = new JLabel("Click for change icon ->");
-        lbl2 = new JLabel("Click for change picture ↑                                "); //kung ayaw mag center edi im doing ts my own way LOLS
+        lbl2 = new JLabel("Click for change picture ↑"); 
 
         //Right Icon
         icon = new JButton(icon8);
@@ -322,259 +322,244 @@ public class PicPuzzle implements ActionListener{
 
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
-                if(s1==pic5){
-                    picture.setIcon(pic);
-                    btn1.setIcon(icon1);
-                    btn2.setIcon(icon2);
-                    btn3.setIcon(icon3);
-                    btn4.setIcon(icon4);
-                    btn5.setIcon(icon5);
-                    btn6.setIcon(icon6);
-                    btn7.setIcon(icon7);
-                    btn8.setIcon(icon8);
-                    btn9.setIcon(icon9);
+            if(s1==pic5){
+                picture.setIcon(pic);
+                btn1.setIcon(icon1);
+                btn2.setIcon(icon2);
+                btn3.setIcon(icon3);
+                btn4.setIcon(icon4);
+                btn5.setIcon(icon5);
+                btn6.setIcon(icon6);
+                btn7.setIcon(icon7);
+                btn8.setIcon(icon8);
+                btn9.setIcon(icon9);
+                icon.setIcon(icon9);
+                star = icon.getIcon();
+            } else if(s1==pic){
+                picture.setIcon(pic2);
+                btn1.setIcon(icon10);
+                btn2.setIcon(icon11);
+                btn3.setIcon(icon12);
+                btn4.setIcon(icon13);
+                btn5.setIcon(icon14);
+                btn6.setIcon(icon15);
+                btn7.setIcon(icon16);
+                btn8.setIcon(icon17);
+                btn9.setIcon(icon18);
+                icon.setIcon(icon18);
+                star = icon.getIcon();
+            } else if(s1==pic2){
+                picture.setIcon(pic3);
+                btn1.setIcon(icon19);
+                btn2.setIcon(icon20);
+                btn3.setIcon(icon21);
+                btn4.setIcon(icon22);
+                btn5.setIcon(icon23);
+                btn6.setIcon(icon24);
+                btn7.setIcon(icon25);
+                btn8.setIcon(icon26);
+                btn9.setIcon(icon27);
+                icon.setIcon(icon27);
+                star = icon.getIcon();
+            } else if(s1==pic3){
+                picture.setIcon(pic4);
+                btn1.setIcon(icon28);
+                btn2.setIcon(icon29);
+                btn3.setIcon(icon30);
+                btn4.setIcon(icon31);
+                btn5.setIcon(icon32);
+                btn6.setIcon(icon33);
+                btn7.setIcon(icon34);
+                btn8.setIcon(icon35);
+                btn9.setIcon(icon36);
+                icon.setIcon(icon36);
+                star = icon.getIcon();
+            } else if(s1==pic4){
+                picture.setIcon(pic5);
+                btn1.setIcon(icon37);
+                btn2.setIcon(icon38);
+                btn3.setIcon(icon39);
+                btn4.setIcon(icon40);
+                btn5.setIcon(icon41);
+                btn6.setIcon(icon42);
+                btn7.setIcon(icon43);
+                btn8.setIcon(icon44);
+                btn9.setIcon(icon45);
+                icon.setIcon(icon45);
+                star = icon.getIcon();
+            }
+        }
+
+        if(e.getSource()== icon){
+            if(picture.getIcon()==pic){
+                Icon s2 = icon.getIcon();
+                if(s2==icon9){
+                    icon.setIcon(icon1);
+                    star = icon1;
+                    // star=btn1.getIcon();
+                    // icon.setIcon(star);
+                } else if(s2==icon1){
+                    icon.setIcon(icon2);
+                    star = icon2;
+                    // star=btn2.getIcon();
+                    // icon.setIcon(star);
+                } else if(s2==icon2){
+                    icon.setIcon(icon3);
+                     star = icon3;   
+                    // star=btn3.getIcon();
+                    // icon.setIcon(star);
+                }else if(s2==icon3){
+                    icon.setIcon(icon4);
+                     star = icon4;
+                    // star=btn4.getIcon();
+                    // icon.setIcon(star);
+                }else if(s2==icon4){
+                    icon.setIcon(icon5);
+                    star = icon5;
+                    // star=btn5.getIcon();
+                    // icon.setIcon(star); 
+                } else if(s2==icon5){
+                    icon.setIcon(icon6);
+                    star = icon6;
+                    // star=btn6.getIcon();
+                    // icon.setIcon(star); 
+                } else if(s2==icon6){
+                    icon.setIcon(icon7);
+                    star = icon7;
+                    // star=btn7.getIcon();
+                    // icon.setIcon(star); 
+                } else if(s2==icon7){
+                    icon.setIcon(icon8);
+                    star = icon8;
+                    // star=btn8.getIcon();
+                    // icon.setIcon(star); 
+                } else if(s2==icon8){
+                    icon.setIcon(icon9);
+                    star = icon9;
+                    // star=btn9.getIcon();
+                    // icon.setIcon(star); 
+                } 
+            } else if (picture.getIcon() == pic2) {
+                Icon s2 = icon.getIcon();
+                if (s2 == icon18) {
+                    icon.setIcon(icon10);
+                    star = icon10;
+                } else if (s2 == icon10) {
+                    icon.setIcon(icon11);
+                    star = icon11;
+                } else if (s2 == icon11) {
+                    icon.setIcon(icon12);
+                    star = icon12;
+                } else if (s2 == icon12) {
+                    icon.setIcon(icon13);
+                    star = icon13;
+                } else if (s2 == icon13) {
+                    icon.setIcon(icon14);
+                    star = icon14;
+                } else if (s2 == icon14) {
+                    icon.setIcon(icon15);
+                    star = icon15;
+                } else if (s2 == icon15) {
+                    icon.setIcon(icon16);
+                    star = icon16;
+                } else if (s2 == icon16) {
+                    icon.setIcon(icon17);
+                    star = icon17;
+                } else if (s2 == icon17) {
+                    icon.setIcon(icon18);
+                    star = icon18;
                 }
-
-                if(e.getSource()== icon && icon==btn9.getIcon()){
-                    Icon s2 = icon.getIcon();
-                    if(s2==icon9){
-                        star=btn1.getIcon();
-                        icon.setIcon(star);
-                    } else if(s2==icon1){
-                        star=btn2.getIcon();
-                        icon.setIcon(star);
-                    } else if(s2==icon2){
-                        star=btn3.getIcon();
-                        icon.setIcon(star);
-                    }else if(s2==icon3){
-                        star=btn4.getIcon();
-                        icon.setIcon(star);
-                    }else if(s2==icon4){
-                        star=btn5.getIcon();
-                        icon.setIcon(star); 
-                    } else if(s2==icon5){
-                        star=btn6.getIcon();
-                        icon.setIcon(star); 
-                    } else if(s2==icon6){
-                        star=btn7.getIcon();
-                        icon.setIcon(star); 
-                    } else if(s2==icon7){
-                        star=btn8.getIcon();
-                        icon.setIcon(star); 
-                    } else if(s2==icon8){
-                        star=btn9.getIcon();
-                        icon.setIcon(star); 
-                    } 
-            
-    
-            //   }else if(s1==pic){
-            //     picture.setIcon(pic2);
-            //     btn1.setIcon(icon10);
-            //     btn2.setIcon(icon11);
-            //     btn3.setIcon(icon12);
-            //     btn4.setIcon(icon13);
-            //     btn5.setIcon(icon14);
-            //     btn6.setIcon(icon15);
-            //     btn7.setIcon(icon16);
-            //     btn8.setIcon(icon17);
-            //     btn9.setIcon(icon18);
-
-            //     if(e.getSource()== icon){
-            //         Icon s2 = icon.getIcon();
-            //           if(s2==icon10){
-            //             star=btn1.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon11){
-            //             star=btn2.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon12){
-            //             star=btn3.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon13){
-            //             star=btn4.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon14){
-            //             star=btn5.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon15){
-            //             star=btn6.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon16){
-            //             star=btn7.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon17){
-            //             star=btn8.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon18){
-            //             star=btn9.getIcon();
-            //             icon.setIcon(star); 
-            //           } 
-            //     }
-    
-            //   }else if(s1==pic2){
-            //     picture.setIcon(pic3);
-            //     btn1.setIcon(icon19);
-            //     btn2.setIcon(icon20);
-            //     btn3.setIcon(icon21);
-            //     btn4.setIcon(icon22);
-            //     btn5.setIcon(icon23);
-            //     btn6.setIcon(icon24);
-            //     btn7.setIcon(icon25);
-            //     btn8.setIcon(icon26);
-            //     btn9.setIcon(icon27);
-
-            //     if(e.getSource()== icon){
-            //         Icon s2 = icon.getIcon();
-            //           if(s2==icon19){
-            //             star=btn1.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon20){
-            //             star=btn2.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon21){
-            //             star=btn3.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon22){
-            //             star=btn4.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon23){
-            //             star=btn5.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon24){
-            //             star=btn6.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon25){
-            //             star=btn7.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon26){
-            //             star=btn8.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon27){
-            //             star=btn9.getIcon();
-            //             icon.setIcon(star); 
-            //           } 
-            //     }
-    
-            //   } else if(s1==pic3){
-            //     picture.setIcon(pic4);
-            //     btn1.setIcon(icon28);
-            //     btn2.setIcon(icon29);
-            //     btn3.setIcon(icon30);
-            //     btn4.setIcon(icon31);
-            //     btn5.setIcon(icon32);
-            //     btn6.setIcon(icon33);
-            //     btn7.setIcon(icon34);
-            //     btn8.setIcon(icon35);
-            //     btn9.setIcon(icon36);
-
-            //     if(e.getSource()== icon){
-            //         Icon s2 = icon.getIcon();
-            //           if(s2==icon28){
-            //             star=btn1.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon29){
-            //             star=btn2.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon30){
-            //             star=btn3.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon31){
-            //             star=btn4.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon32){
-            //             star=btn5.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon33){
-            //             star=btn6.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon34){
-            //             star=btn7.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon35){
-            //             star=btn8.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon36){
-            //             star=btn9.getIcon();
-            //             icon.setIcon(star); 
-            //           } 
-            //     }
-
-            //   } else if(s1==pic4){
-            //     picture.setIcon(pic5);
-            //     btn1.setIcon(icon37);
-            //     btn2.setIcon(icon38);
-            //     btn3.setIcon(icon39);
-            //     btn4.setIcon(icon40);
-            //     btn5.setIcon(icon41);
-            //     btn6.setIcon(icon42);
-            //     btn7.setIcon(icon43);
-            //     btn8.setIcon(icon44);
-            //     btn9.setIcon(icon45);
-
-            //     if(e.getSource()== icon){
-            //         Icon s2 = icon.getIcon();
-            //           if(s2==icon37){
-            //             star=btn1.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon38){
-            //             star=btn2.getIcon();
-            //             icon.setIcon(star);
-            //           } else if(s2==icon39){
-            //             star=btn3.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon40){
-            //             star=btn4.getIcon();
-            //             icon.setIcon(star);
-            //           }else if(s2==icon41){
-            //             star=btn5.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon42){
-            //             star=btn6.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon43){
-            //             star=btn7.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon44){
-            //             star=btn8.getIcon();
-            //             icon.setIcon(star); 
-            //           } else if(s2==icon45){
-            //             star=btn9.getIcon();
-            //             icon.setIcon(star); 
-            //           } 
-            //     }
-              } 
-          }
-    
-        //   if(e.getSource()== icon){
-        //     Icon s2 = icon.getIcon();
-        //       if(s2==icon9){
-        //         star=btn1.getIcon();
-        //         icon.setIcon(star);
-        //       } else if(s2==icon1){
-        //         star=btn2.getIcon();
-        //         icon.setIcon(star);
-        //       } else if(s2==icon2){
-        //         star=btn3.getIcon();
-        //         icon.setIcon(icon3);
-        //       }else if(s2==icon3){
-        //         star=btn4.getIcon();
-        //         icon.setIcon(icon4);
-        //       }else if(s2==icon4){
-        //         star=btn5.getIcon();
-        //         icon.setIcon(icon5); 
-        //       } else if(s2==icon5){
-        //         star=btn6.getIcon();
-        //         icon.setIcon(icon6); 
-        //       } else if(s2==icon6){
-        //         star=btn7.getIcon();
-        //         icon.setIcon(icon7); 
-        //       } else if(s2==icon7){
-        //         star=btn8.getIcon();
-        //         icon.setIcon(icon8); 
-        //       } else if(s2==icon8){
-        //         star=btn9.getIcon();
-        //         icon.setIcon(icon9); 
-        //       } 
-        // }
+            } else if (picture.getIcon() == pic3) {
+                Icon s2 = icon.getIcon();
+                if (s2 == icon27) {
+                    icon.setIcon(icon19);
+                    star = icon19;
+                } else if (s2 == icon19) {
+                    icon.setIcon(icon20);
+                    star = icon20;
+                } else if (s2 == icon20) {
+                    icon.setIcon(icon21);
+                    star = icon21;
+                } else if (s2 == icon21) {
+                    icon.setIcon(icon22);
+                    star = icon22;
+                } else if (s2 == icon22) {
+                    icon.setIcon(icon23);
+                    star = icon23;
+                } else if (s2 == icon23) {
+                    icon.setIcon(icon24);
+                    star = icon24;
+                } else if (s2 == icon24) {
+                    icon.setIcon(icon25);
+                    star = icon25;
+                } else if (s2 == icon25) {
+                    icon.setIcon(icon26);
+                    star = icon26;
+                } else if (s2 == icon26) {
+                    icon.setIcon(icon27);
+                    star = icon27;
+                }
+            } else if (picture.getIcon() == pic4) {
+                Icon s2 = icon.getIcon();
+                if (s2 == icon36) {
+                    icon.setIcon(icon28);
+                    star = icon28;
+                } else if (s2 == icon28) {
+                    icon.setIcon(icon29);
+                    star = icon29;
+                } else if (s2 == icon29) {
+                    icon.setIcon(icon30);
+                    star = icon30;
+                } else if (s2 == icon30) {
+                    icon.setIcon(icon31);
+                    star = icon31;
+                } else if (s2 == icon31) {
+                    icon.setIcon(icon32);
+                    star = icon32;
+                } else if (s2 == icon32) {
+                    icon.setIcon(icon33);
+                    star = icon33;
+                } else if (s2 == icon33) {
+                    icon.setIcon(icon34);
+                    star = icon34;
+                } else if (s2 == icon34) {
+                    icon.setIcon(icon35);
+                    star = icon35;
+                } else if (s2 == icon35) {
+                    icon.setIcon(icon36);
+                    star = icon36;
+                }
+            } else if (picture.getIcon() == pic5) {
+                Icon s2 = icon.getIcon();
+                if (s2 == icon45) {
+                    icon.setIcon(icon37);
+                    star = icon37;
+                } else if (s2 == icon37) {
+                    icon.setIcon(icon38);
+                    star = icon38;
+                } else if (s2 == icon38) {
+                    icon.setIcon(icon39);
+                    star = icon39;
+                } else if (s2 == icon39) {
+                    icon.setIcon(icon40);
+                    star = icon40;
+                } else if (s2 == icon40) {
+                    icon.setIcon(icon41);
+                    star = icon41;
+                } else if (s2 == icon41) {
+                    icon.setIcon(icon42);
+                    star = icon42;
+                } else if (s2 == icon42) {
+                    icon.setIcon(icon43);
+                    star = icon43;
+                } else if (s2 == icon43) {
+                    icon.setIcon(icon44);
+                    star = icon44;
+                } else if (s2 == icon44) {
+                    icon.setIcon(icon45);
+                    star = icon45;
+                }
+            }
+        }
     }
 }
