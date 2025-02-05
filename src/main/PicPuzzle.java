@@ -203,6 +203,8 @@ public class PicPuzzle implements ActionListener{
             star = icon.getIcon();
         }
 
+        // NOTE: A button can only switch to its neighbouring buttons/the buttons besides it.
+        //switch button 1 to button 2 and 4
         if(e.getSource() == btn1){
             Icon s1 = btn1.getIcon();
                 if(btn2.getIcon()==star){
@@ -214,6 +216,7 @@ public class PicPuzzle implements ActionListener{
                 }
         }
 
+        //switch button 2 to button 1, 5, 3
         if(e.getSource() == btn2){
             Icon s1 = btn2.getIcon();
                 if(btn1.getIcon()==star){
@@ -228,6 +231,7 @@ public class PicPuzzle implements ActionListener{
                 }
         }
 
+        //switch button 3 to button 2 and 6
         if(e.getSource()==btn3){  
             Icon s1=btn3.getIcon();  
                 if(btn2.getIcon()==star){  
@@ -238,7 +242,8 @@ public class PicPuzzle implements ActionListener{
                     btn3.setIcon(star);  
                 }  
         }
-            
+
+        //switch button 4 to 1, 5, 7
         if(e.getSource()==btn4){  
             Icon s1=btn4.getIcon();  
                 if(btn1.getIcon()==star){  
@@ -253,6 +258,7 @@ public class PicPuzzle implements ActionListener{
                 }  
         }
 
+        //switch button 5 to 2, 4, 6, 8
         if(e.getSource()==btn5){  
             Icon s1=btn5.getIcon();  
                 if(btn2.getIcon()==star){  
@@ -270,6 +276,7 @@ public class PicPuzzle implements ActionListener{
                 }  
         }
 
+        //switch button 6 to 3, 5, 9
         if(e.getSource()==btn6){  
             Icon s1=btn6.getIcon();  
                 if(btn3.getIcon()==star){  
@@ -284,6 +291,7 @@ public class PicPuzzle implements ActionListener{
                 }  
         }
 
+        //switch button 7 to 4 and 8
         if(e.getSource()==btn7){  
             Icon s1=btn7.getIcon();  
                 if(btn4.getIcon()==star){  
@@ -295,6 +303,7 @@ public class PicPuzzle implements ActionListener{
                 }  
         } 
 
+        //switch button 8 to 7, 5, 9
         if(e.getSource()==btn8){  
             Icon s1=btn8.getIcon();  
                 if(btn7.getIcon()==star){  
@@ -309,6 +318,7 @@ public class PicPuzzle implements ActionListener{
                 }
         }  
 
+        //switch button 9 to 8 and 6
         if(e.getSource()==btn9){  
             Icon s1=btn9.getIcon();  
                 if(btn8.getIcon()==star){  
@@ -320,6 +330,7 @@ public class PicPuzzle implements ActionListener{
                 }  
         }  
 
+        //change puzzle set
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
             if(s1==pic5){
@@ -360,7 +371,7 @@ public class PicPuzzle implements ActionListener{
                 btn8.setIcon(icon26);
                 btn9.setIcon(icon27);
                 icon.setIcon(icon27);
-                star = icon.getIcon();
+                star = icon.getIcon(); 
             } else if(s1==pic3){
                 picture.setIcon(pic4);
                 btn1.setIcon(icon28);
@@ -390,54 +401,38 @@ public class PicPuzzle implements ActionListener{
             }
         }
 
+        //icon switches from the first icon to the last icon with every click
         if(e.getSource()== icon){
+            //checking kung alin set ng puzzle icons ang mag display based sa pic, pic2, pic3, pic4, pic5
             if(picture.getIcon()==pic){
                 Icon s2 = icon.getIcon();
                 if(s2==icon9){
                     icon.setIcon(icon1);
                     star = icon1;
-                    // star=btn1.getIcon();
-                    // icon.setIcon(star);
                 } else if(s2==icon1){
                     icon.setIcon(icon2);
                     star = icon2;
-                    // star=btn2.getIcon();
-                    // icon.setIcon(star);
                 } else if(s2==icon2){
                     icon.setIcon(icon3);
                      star = icon3;   
-                    // star=btn3.getIcon();
-                    // icon.setIcon(star);
                 }else if(s2==icon3){
                     icon.setIcon(icon4);
                      star = icon4;
-                    // star=btn4.getIcon();
-                    // icon.setIcon(star);
                 }else if(s2==icon4){
                     icon.setIcon(icon5);
                     star = icon5;
-                    // star=btn5.getIcon();
-                    // icon.setIcon(star); 
                 } else if(s2==icon5){
                     icon.setIcon(icon6);
                     star = icon6;
-                    // star=btn6.getIcon();
-                    // icon.setIcon(star); 
                 } else if(s2==icon6){
                     icon.setIcon(icon7);
                     star = icon7;
-                    // star=btn7.getIcon();
-                    // icon.setIcon(star); 
                 } else if(s2==icon7){
                     icon.setIcon(icon8);
                     star = icon8;
-                    // star=btn8.getIcon();
-                    // icon.setIcon(star); 
                 } else if(s2==icon8){
                     icon.setIcon(icon9);
                     star = icon9;
-                    // star=btn9.getIcon();
-                    // icon.setIcon(star); 
                 } 
             } else if (picture.getIcon() == pic2) {
                 Icon s2 = icon.getIcon();
