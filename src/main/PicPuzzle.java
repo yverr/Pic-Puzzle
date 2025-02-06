@@ -11,7 +11,9 @@ public class PicPuzzle implements ActionListener{
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
     JButton icon, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, picture;
 
-    Icon star;
+    Icon star;
+
+    //puzzle set 1
     Icon icon1 = new ImageIcon("./src/res/images/1.jpg");
     Icon icon2 = new ImageIcon("./src/res/images/2.jpg");
     Icon icon3 = new ImageIcon("./src/res/images/3.jpg");
@@ -23,6 +25,7 @@ public class PicPuzzle implements ActionListener{
     Icon icon9 = new ImageIcon("./src/res/images/9.jpg");
     Icon pic = new ImageIcon("./src/res/images/flowercat.jpg");
 
+    //puzzle set 2
     Icon icon10 = new ImageIcon("./src/res/images/10.jpg");
     Icon icon11 = new ImageIcon("./src/res/images/11.jpg");
     Icon icon12 = new ImageIcon("./src/res/images/12.jpg");
@@ -34,6 +37,7 @@ public class PicPuzzle implements ActionListener{
     Icon icon18 = new ImageIcon("./src/res/images/18.jpg");
     Icon pic2 = new ImageIcon("./src/res/images/killua.png");
 
+    //puzzle set 3
     Icon icon19 = new ImageIcon("./src/res/images/19.jpg");
     Icon icon20 = new ImageIcon("./src/res/images/20.jpg");
     Icon icon21 = new ImageIcon("./src/res/images/21.jpg");
@@ -45,6 +49,7 @@ public class PicPuzzle implements ActionListener{
     Icon icon27 = new ImageIcon("./src/res/images/27.jpg");
     Icon pic3 = new ImageIcon("./src/res/images/yui.jpg");
 
+    //puzzle set 4
     Icon icon28 = new ImageIcon("./src/res/images/28.jpg");
     Icon icon29 = new ImageIcon("./src/res/images/29.jpg");
     Icon icon30 = new ImageIcon("./src/res/images/30.jpg");
@@ -56,6 +61,7 @@ public class PicPuzzle implements ActionListener{
     Icon icon36 = new ImageIcon("./src/res/images/36.jpg");
     Icon pic4 = new ImageIcon("./src/res/images/pika.jpg");
 
+    //puzzle set 5
     Icon icon37 = new ImageIcon("./src/res/images/37.jpg");
     Icon icon38 = new ImageIcon("./src/res/images/38.jpg");
     Icon icon39 = new ImageIcon("./src/res/images/39.jpg");
@@ -69,6 +75,7 @@ public class PicPuzzle implements ActionListener{
 
     public PicPuzzle(){
 
+        //assigning a random icon
         star = icon8;
 
         //top panel, center panel container: main panel 
@@ -184,6 +191,7 @@ public class PicPuzzle implements ActionListener{
         frm.pack();
         frm.setVisible(true);
 
+        //action listener 
         icon.addActionListener(this);
         btn1.addActionListener(this); btn2.addActionListener(this);
         btn3.addActionListener(this); btn4.addActionListener(this);
@@ -399,19 +407,19 @@ public class PicPuzzle implements ActionListener{
             }
         }
 
-        //icon switches from the first icon to the last icon with every click
+        //icon switches from the first icon to the last icon with every click(basically, it's just looping)
         if(e.getSource()== icon){
-            //checking kung alin set ng puzzle icons ang mag display based sa pic, pic2, pic3, pic4, pic5
+            //checking kung alin set ng puzzle icons ang mag display sa icon based sa pic, pic2, pic3, pic4, pic5
             if(picture.getIcon()==pic){
                 Icon s2 = icon.getIcon();
                 if(s2==icon9){
-                    icon.setIcon(icon1);
-                    star = icon1;
+                    icon.setIcon(icon1); //if the icon(icon9) is clicked, the icon becomes (icon1)
+                    star = icon1;// star switches to icon1 as well
                 } else if(s2==icon1){
-                    icon.setIcon(icon2);
-                    star = icon2;
+                    icon.setIcon(icon2); //if the icon(icon1) is clicked, the icon becomes (icon2)
+                    star = icon2;// star switches to icon2 as well
                 } else if(s2==icon2){
-                    icon.setIcon(icon3);
+                    icon.setIcon(icon3);//repeat
                      star = icon3;   
                 }else if(s2==icon3){
                     icon.setIcon(icon4);
@@ -429,12 +437,12 @@ public class PicPuzzle implements ActionListener{
                     icon.setIcon(icon8);
                     star = icon8;
                 } else if(s2==icon8){
-                    icon.setIcon(icon9);
+                    icon.setIcon(icon9); 
                     star = icon9;
                 } 
-            } else if (picture.getIcon() == pic2) {
+            } else if (picture.getIcon() == pic2){
                 Icon s2 = icon.getIcon();
-                if (s2 == icon18) {
+                if (s2==icon18) {
                     icon.setIcon(icon10);
                     star = icon10;
                 } else if (s2 == icon10) {
@@ -462,9 +470,9 @@ public class PicPuzzle implements ActionListener{
                     icon.setIcon(icon18);
                     star = icon18;
                 }
-            } else if (picture.getIcon() == pic3) {
-                Icon s2 = icon.getIcon();
-                if (s2 == icon27) {
+            } else if (picture.getIcon()==pic3){
+                Icon s2=icon.getIcon();
+                if (s2==icon27) {
                     icon.setIcon(icon19);
                     star = icon19;
                 } else if (s2 == icon19) {
@@ -492,9 +500,9 @@ public class PicPuzzle implements ActionListener{
                     icon.setIcon(icon27);
                     star = icon27;
                 }
-            } else if (picture.getIcon() == pic4) {
+            } else if (picture.getIcon() == pic4){
                 Icon s2 = icon.getIcon();
-                if (s2 == icon36) {
+                if (s2==icon36) {
                     icon.setIcon(icon28);
                     star = icon28;
                 } else if (s2 == icon28) {
@@ -524,31 +532,31 @@ public class PicPuzzle implements ActionListener{
                 }
             } else if (picture.getIcon() == pic5) {
                 Icon s2 = icon.getIcon();
-                if (s2 == icon45) {
+                if (s2 ==icon45) {
                     icon.setIcon(icon37);
                     star = icon37;
-                } else if (s2 == icon37) {
+                } else if (s2==icon37) {
                     icon.setIcon(icon38);
                     star = icon38;
-                } else if (s2 == icon38) {
+                } else if (s2==icon38) {
                     icon.setIcon(icon39);
                     star = icon39;
-                } else if (s2 == icon39) {
+                } else if (s2==icon39) {
                     icon.setIcon(icon40);
                     star = icon40;
-                } else if (s2 == icon40) {
+                } else if (s2==icon40) {
                     icon.setIcon(icon41);
                     star = icon41;
-                } else if (s2 == icon41) {
+                } else if (s2==icon41) {
                     icon.setIcon(icon42);
                     star = icon42;
-                } else if (s2 == icon42) {
+                } else if (s2==icon42) {
                     icon.setIcon(icon43);
                     star = icon43;
-                } else if (s2 == icon43) {
+                } else if (s2==icon43) {
                     icon.setIcon(icon44);
                     star = icon44;
-                } else if (s2 == icon44) {
+                } else if (s2==icon44) {
                     icon.setIcon(icon45);
                     star = icon45;
                 }
