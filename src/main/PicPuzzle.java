@@ -11,9 +11,7 @@ public class PicPuzzle implements ActionListener{
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
     JButton icon, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, picture;
 
-    Icon star;
-    // Icon sami0 = new ImageIcon(".src/res/images/sami.jpg");
-    // Icon ic0 = new ImageIcon("src\\res\\images\\starr.jpg");
+    Icon star;
     Icon icon1 = new ImageIcon("./src/res/images/1.jpg");
     Icon icon2 = new ImageIcon("./src/res/images/2.jpg");
     Icon icon3 = new ImageIcon("./src/res/images/3.jpg");
@@ -200,7 +198,7 @@ public class PicPuzzle implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == icon || e.getSource() == picture){
-            star = icon.getIcon();
+            star = icon.getIcon(); //meron na sa baba pero may trust issues ako eh
         }
 
         // NOTE: A button can only switch to its neighbouring buttons/the buttons besides it.
