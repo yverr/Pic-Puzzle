@@ -1,5 +1,3 @@
-// package main;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,9 +8,8 @@ public class PicPuzzle implements ActionListener{
     JLabel lbl1, lbl2;
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
     JButton icon, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, picture;
-
+    
     Icon star;
-
     //puzzle set 1
     Icon icon1 = new ImageIcon("./src/res/images/1.jpg");
     Icon icon2 = new ImageIcon("./src/res/images/2.jpg");
@@ -73,6 +70,13 @@ public class PicPuzzle implements ActionListener{
     Icon icon45 = new ImageIcon("./src/res/images/45.jpg");
     Icon pic5 = new ImageIcon("./src/res/images/cat.jpg");
 
+    //Order of correct puzzle piece
+    Icon[] correctIconsPic1 = {icon9, icon8, icon7, icon6, icon5, icon4, icon3, icon2, icon1};
+    Icon[] correctIconsPic2 = {icon18, icon17, icon16, icon15, icon14, icon13, icon12, icon11, icon10};
+    Icon[] correctIconsPic3 = {icon26, icon24, icon25, icon19, icon21, icon20, icon23, icon27, icon22};
+    Icon[] correctIconsPic4 = {icon30, icon28, icon31, icon36, icon29, icon34, icon35, icon32, icon33};
+    Icon[] correctIconsPic5 = {icon37, icon40, icon44, icon41, icon39, icon45, icon38, icon43, icon42};
+
     public PicPuzzle(){
 
         //assigning a random icon
@@ -114,21 +118,6 @@ public class PicPuzzle implements ActionListener{
         btn8 = new JButton(icon8);
         btn9 = new JButton(icon9);
         picture = new JButton();
-
-        //setting preffered size for buttons
-        int w = icon1.getIconWidth();
-        int h = icon1.getIconHeight();
-
-        //w = getIconWidth, h = getIconHeight
-        btn1.setPreferredSize(new Dimension(w, h));
-        btn2.setPreferredSize(new Dimension(w, h));
-        btn3.setPreferredSize(new Dimension(w, h)); 
-        btn4.setPreferredSize(new Dimension(w, h));
-        btn5.setPreferredSize(new Dimension(w, h));
-        btn6.setPreferredSize(new Dimension(w, h));
-        btn7.setPreferredSize(new Dimension(w, h));
-        btn8.setPreferredSize(new Dimension(w, h));
-        btn9.setPreferredSize(new Dimension(w, h));
 
         //buttons container: left panel
         leftPanel = new  JPanel();
@@ -191,6 +180,7 @@ public class PicPuzzle implements ActionListener{
         frm.pack();
         frm.setVisible(true);
 
+        
         //action listener 
         icon.addActionListener(this);
         btn1.addActionListener(this); btn2.addActionListener(this);
@@ -204,10 +194,6 @@ public class PicPuzzle implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource() == icon || e.getSource() == picture){
-            star = icon.getIcon(); //meron na sa baba pero may trust issues ako eh
-        }
 
         // NOTE: A button can only switch to its neighbouring buttons/the buttons besides it.
         //switch button 1 to button 2 and 4
@@ -339,20 +325,7 @@ public class PicPuzzle implements ActionListener{
         //change puzzle set
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
-            if(s1==pic5){
-                picture.setIcon(pic);
-                btn1.setIcon(icon1);
-                btn2.setIcon(icon2);
-                btn3.setIcon(icon3);
-                btn4.setIcon(icon4);
-                btn5.setIcon(icon5);
-                btn6.setIcon(icon6);
-                btn7.setIcon(icon7);
-                btn8.setIcon(icon8);
-                btn9.setIcon(icon9);
-                icon.setIcon(icon9);
-                star = icon.getIcon();
-            } else if(s1==pic){
+            if(s1==pic && checkPuzzleSolved()){
                 picture.setIcon(pic2);
                 btn1.setIcon(icon10);
                 btn2.setIcon(icon11);
@@ -363,9 +336,9 @@ public class PicPuzzle implements ActionListener{
                 btn7.setIcon(icon16);
                 btn8.setIcon(icon17);
                 btn9.setIcon(icon18);
-                icon.setIcon(icon18);
+                icon.setIcon(icon15);
                 star = icon.getIcon();
-            } else if(s1==pic2){
+            } else if(s1==pic2 && checkPuzzleSolved()){
                 picture.setIcon(pic3);
                 btn1.setIcon(icon19);
                 btn2.setIcon(icon20);
@@ -376,9 +349,9 @@ public class PicPuzzle implements ActionListener{
                 btn7.setIcon(icon25);
                 btn8.setIcon(icon26);
                 btn9.setIcon(icon27);
-                icon.setIcon(icon27);
+                icon.setIcon(icon20);
                 star = icon.getIcon(); 
-            } else if(s1==pic3){
+            } else if(s1==pic3 && checkPuzzleSolved()){
                 picture.setIcon(pic4);
                 btn1.setIcon(icon28);
                 btn2.setIcon(icon29);
@@ -389,9 +362,9 @@ public class PicPuzzle implements ActionListener{
                 btn7.setIcon(icon34);
                 btn8.setIcon(icon35);
                 btn9.setIcon(icon36);
-                icon.setIcon(icon36);
+                icon.setIcon(icon32);
                 star = icon.getIcon();
-            } else if(s1==pic4){
+            } else if(s1==pic4 && checkPuzzleSolved()){
                 picture.setIcon(pic5);
                 btn1.setIcon(icon37);
                 btn2.setIcon(icon38);
@@ -402,13 +375,16 @@ public class PicPuzzle implements ActionListener{
                 btn7.setIcon(icon43);
                 btn8.setIcon(icon44);
                 btn9.setIcon(icon45);
-                icon.setIcon(icon45);
+                icon.setIcon(icon44);
                 star = icon.getIcon();
-            }
+            } else if(s1==pic5){
+                JOptionPane.showMessageDialog(frm, "You won the entire puzzle!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                //TO DO: add a prompt, back to game menu or restart option.
+            } 
         }
 
         //icon switches from the first icon to the last icon with every click(basically, it's just looping)
-        if(e.getSource()== icon){
+        if(e.getSource()== icon ){
             //checking kung alin set ng puzzle icons ang mag display sa icon based sa pic, pic2, pic3, pic4, pic5
             if(picture.getIcon()==pic){
                 Icon s2 = icon.getIcon();
@@ -480,7 +456,7 @@ public class PicPuzzle implements ActionListener{
                     star = icon20;
                 } else if (s2 == icon20) {
                     icon.setIcon(icon21);
-                    star = icon21;
+                    star = icon21;  
                 } else if (s2 == icon21) {
                     icon.setIcon(icon22);
                     star = icon22;
@@ -561,6 +537,43 @@ public class PicPuzzle implements ActionListener{
                     star = icon45;
                 }
             }
+        }
+    }
+
+    private boolean checkPuzzleSolved() {
+        Icon[] currentIcons = {
+            btn1.getIcon(), btn2.getIcon(), btn3.getIcon(),
+            btn4.getIcon(), btn5.getIcon(), btn6.getIcon(),
+            btn7.getIcon(), btn8.getIcon(), btn9.getIcon()
+        };
+
+        Icon[] correctIcon = null;
+        Icon currentPic = picture.getIcon();
+        if(currentPic == pic)
+            correctIcon = correctIconsPic1;
+        else if(currentPic == pic2)
+            correctIcon = correctIconsPic2;
+        else if(currentPic == pic3)
+            correctIcon = correctIconsPic3;
+        else if(currentPic == pic4)
+            correctIcon = correctIconsPic4;
+        else if(currentPic == pic5)
+            correctIcon = correctIconsPic5;
+
+        boolean isSolved = true;
+        for (int i = 0; i < currentIcons.length; i++) {
+            if (currentIcons[i] != correctIcon[i]) {
+                isSolved = false;
+                break;
+            }
+        }
+
+        if (isSolved) {
+            JOptionPane.showMessageDialog(frm, "You solved the puzzle! Next!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        }  else {
+            JOptionPane.showMessageDialog(frm, "Not yet. Keep trying!", "Puzzle Incomplete", JOptionPane.WARNING_MESSAGE);
+            return false;
         }
     }
 }
