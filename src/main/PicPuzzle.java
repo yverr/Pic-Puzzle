@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+//TO DO: Try to refactor code 
 public class PicPuzzle implements ActionListener{
     JFrame frm = new JFrame();
     JLabel lbl1, lbl2;
@@ -595,9 +596,7 @@ public class PicPuzzle implements ActionListener{
         }  else {
             JOptionPane.showMessageDialog(frm, "Not yet. Keep trying!", "Puzzle Incomplete", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-
-        
+        }     
     }
 
     private void moveCount() {
