@@ -8,7 +8,9 @@ public class PicPuzzle implements ActionListener{
     JLabel lbl1, lbl2;
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
     JButton icon, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, picture;
-    
+    int moveCount = 0;
+    JLabel moveLabel;
+
     Icon star;
     //puzzle set 1
     Icon icon1 = new ImageIcon("./src/res/images/1.jpg");
@@ -90,7 +92,9 @@ public class PicPuzzle implements ActionListener{
 
         //Label 1 & 2
         lbl1 = new JLabel("Click for change icon ->");
+        lbl1.setFont(new Font("Comic Sans", Font.BOLD, 15));
         lbl2 = new JLabel("Click for change picture ↑"); 
+        lbl2.setFont(new Font("Comic Sans", Font.BOLD, 15));
 
         //Right Icon
         icon = new JButton(icon8);
@@ -98,13 +102,17 @@ public class PicPuzzle implements ActionListener{
         icon.setPreferredSize(new Dimension(90, 90));   
         
         //Wrap the text para hindi siya mag compress sa west
-        JPanel topWrapper = new JPanel(new GridBagLayout());
+        var topWrapper = new JPanel(new GridBagLayout());
         topWrapper.add(lbl1);
+
+        moveLabel = new JLabel("Moves: 0");
+        moveLabel.setFont(new Font("Comic Sans", Font.BOLD, 15));
 
         //lbl1 and icon container: top panel
         topPanel = new JPanel(new BorderLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(15,50,0,50));
         topPanel.add(topWrapper, BorderLayout.CENTER);
+        topPanel.add(moveLabel, BorderLayout.WEST);
         topPanel.add(icon, BorderLayout.EAST);
         
         //buttons
@@ -147,7 +155,7 @@ public class PicPuzzle implements ActionListener{
         rightPanel.add(picture, BorderLayout.CENTER);   
                 
         //wrapping the text para hindi siya mag compress sa taas(idk ayaw niya mapunta sa taas pag wala wrapper and gridbaglayout)
-        JPanel leftWrapper = new JPanel(new GridBagLayout());
+        var leftWrapper = new JPanel(new GridBagLayout());
 
         //lbl2 container: bottom right panel
         bottomPanel = new JPanel(); 
@@ -206,6 +214,7 @@ public class PicPuzzle implements ActionListener{
                     btn4.setIcon(s1);
                     btn1.setIcon(star);
                 }
+            moveCount();
         }
 
         //switch button 2 to button 1, 5, 3
@@ -221,6 +230,7 @@ public class PicPuzzle implements ActionListener{
                     btn3.setIcon(s1);
                     btn2.setIcon(star);
                 }
+            moveCount();
         }
 
         //switch button 3 to button 2 and 6
@@ -232,7 +242,8 @@ public class PicPuzzle implements ActionListener{
                 } else if(btn6.getIcon()==star){  
                     btn6.setIcon(s1);  
                     btn3.setIcon(star);  
-                }  
+                } 
+            moveCount(); 
         }
 
         //switch button 4 to 1, 5, 7
@@ -248,6 +259,7 @@ public class PicPuzzle implements ActionListener{
                     btn7.setIcon(s1);  
                     btn4.setIcon(star);  
                 }  
+            moveCount();
         }
 
         //switch button 5 to 2, 4, 6, 8
@@ -266,6 +278,7 @@ public class PicPuzzle implements ActionListener{
                     btn8.setIcon(s1);  
                     btn5.setIcon(star);  
                 }  
+            moveCount();
         }
 
         //switch button 6 to 3, 5, 9
@@ -281,6 +294,7 @@ public class PicPuzzle implements ActionListener{
                     btn9.setIcon(s1);  
                     btn6.setIcon(star);  
                 }  
+            moveCount();
         }
 
         //switch button 7 to 4 and 8
@@ -293,6 +307,7 @@ public class PicPuzzle implements ActionListener{
                     btn8.setIcon(s1);  
                     btn7.setIcon(star);  
                 }  
+            moveCount();
         } 
 
         //switch button 8 to 7, 5, 9
@@ -308,6 +323,7 @@ public class PicPuzzle implements ActionListener{
                     btn9.setIcon(s1);  
                     btn8.setIcon(star);  
                 }
+            moveCount();
         }  
 
         //switch button 9 to 8 and 6
@@ -320,6 +336,7 @@ public class PicPuzzle implements ActionListener{
                     btn6.setIcon(s1);  
                     btn9.setIcon(star);  
                 }  
+            moveCount();
         }  
 
         //change puzzle set
@@ -378,8 +395,12 @@ public class PicPuzzle implements ActionListener{
                 icon.setIcon(icon44);
                 star = icon.getIcon();
             } else if(s1==pic5){
-                JOptionPane.showMessageDialog(frm, "You won the entire puzzle!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                //TO DO: add a prompt, back to game menu or restart option.
+                JOptionPane.showMessageDialog(frm, "You solved all the puzzles!\nYou've made "+ moveCount + " moves in total!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+                //TO DO: add a JDialog, back to game menu or restart option.
+
+                frm.dispose();
+                GameMenu gameMenu = new GameMenu();
+                gameMenu.setVisible(true);
             } 
         }
 
@@ -575,5 +596,12 @@ public class PicPuzzle implements ActionListener{
             JOptionPane.showMessageDialog(frm, "Not yet. Keep trying!", "Puzzle Incomplete", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+
+        
     }
+
+    private void moveCount() {
+            moveCount++;
+            moveLabel.setText("Moves: " + moveCount);
+        }
 }

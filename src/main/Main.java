@@ -1,6 +1,6 @@
-public class Main {
-    public static void main(String[] args) {
-        PicPuzzle p = new PicPuzzle();
-        p.getClass();
+public class Main{
+    public static void main(String[] args){
+        GameMenu g = new GameMenu();
+        g.getClass();
     }
 }
