@@ -38,7 +38,7 @@ public class GameDifficulty extends JDialog implements ActionListener{
             btn2.addActionListener(this);
             btn2.setFocusable(false);
     
-            btn3 = new JButton(" Difficult ");
+            btn3 = new JButton("   Hard   ");
             btn3.setFont(new Font("Comic Sans",Font.BOLD,20));
             btn3.setPreferredSize(new Dimension(70, 30));
             btn3.addActionListener(this);
