@@ -40,11 +40,6 @@ PicPuzzle is a Java-based sliding puzzle game that challenges players to solve a
 * **Game not launching**: If the game is not launching, try checking the Java version and ensuring that it is up to date.
 * **Game crashing**: If the game is crashing, try checking the game's logs for any errors.
 
-**License**
-----------
-
-PicPuzzle is licensed under the MIT License. See the LICENSE file for more information.
-
 **Contributing**
 --------------
 
