@@ -80,7 +80,6 @@ public class GameMenu extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-        
     }
 
     @Override
