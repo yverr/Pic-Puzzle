@@ -21,10 +21,6 @@ public class GameDifficulty extends JDialog implements ActionListener{
             close.setFocusPainted(false);
             close.addActionListener(e -> this.dispose());
             // close.setVisible(false); 
-            /* 
-              this entire class stops working when I remove this close button so 
-              I could only make it invisible instead of removing it lol help 
-            */
     
             topPanel = new JPanel(new BorderLayout());
             topPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 5));
@@ -79,7 +75,6 @@ public class GameDifficulty extends JDialog implements ActionListener{
         this.setVisible(visible);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btn1){
@@ -87,5 +82,6 @@ public class GameDifficulty extends JDialog implements ActionListener{
             p.getClass();
             display(false);
         }
+        //TO DO: Medium and Difficult Game
     }
 }
