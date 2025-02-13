@@ -9,6 +9,7 @@ PicPuzzle is a Java-based sliding puzzle game that challenges players to solve a
 **Features**
 ------------
 
+* **Three Levels of Difficulty**: The game features three levels of difficulty- Easy, Medium, and Hard.
 * **Multiple Puzzle Sets**: The game includes multiple puzzle sets, each with its own unique set of images and challenges.
 * **Simple and Intuitive Interface**: The game features a simple and easy-to-use interface that makes it easy for players to navigate and play.
 
@@ -27,9 +28,11 @@ PicPuzzle is a Java-based sliding puzzle game that challenges players to solve a
 
 **Gameplay**
 ------------
-
-1. **Solve the puzzle**: Solve the puzzle by sliding the tiles into the correct position.
-2. **Progress to the next puzzle**: Progress to the next puzzle by clicking on the picture.
+1. **Game Menu**: Click 'Play Game' to choose a difficulty.
+2. **Choosing Difficulty**: You can pick between Easy, Medium, and Hard(Medium and diff are still in development).
+3. **Solve the puzzle**: Solve the puzzle by sliding the tiles into the correct position.
+4. **Progress to the next puzzle**: Progress to the next puzzle by clicking on the picture.
+5. **Move Count**: Your moves are counted so try to make less moves as much as possible!
 
 **Troubleshooting**
 ------------------
