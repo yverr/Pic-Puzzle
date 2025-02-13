@@ -82,6 +82,6 @@ public class GameDifficulty extends JDialog implements ActionListener{
             p.getClass();
             display(false);
         }
-        //TO DO: Medium and Difficult Game
+        //TO DO: Medium and Hard Game
     }
 }
