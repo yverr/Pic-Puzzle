@@ -1,9 +1,7 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 
-//TO DO: Try to refactor code 
 public class PicPuzzle implements ActionListener{
     JFrame frm = new JFrame();
     JLabel lbl1, lbl2;
@@ -14,64 +12,64 @@ public class PicPuzzle implements ActionListener{
 
     Icon star;
     //puzzle set 1
-    Icon icon1 = new ImageIcon("./src/res/images/1.jpg");
-    Icon icon2 = new ImageIcon("./src/res/images/2.jpg");
-    Icon icon3 = new ImageIcon("./src/res/images/3.jpg");
-    Icon icon4 = new ImageIcon("./src/res/images/4.jpg");
-    Icon icon5 = new ImageIcon("./src/res/images/5.jpg");
-    Icon icon6 = new ImageIcon("./src/res/images/6.jpg");
-    Icon icon7 = new ImageIcon("./src/res/images/7.jpg");
-    Icon icon8 = new ImageIcon("./src/res/images/8.jpg");
-    Icon icon9 = new ImageIcon("./src/res/images/9.jpg");
-    Icon pic = new ImageIcon("./src/res/images/flowercat.jpg");
+    Icon icon1 = new ImageIcon("./src/res/images/Game1/1.jpg");
+    Icon icon2 = new ImageIcon("./src/res/images/Game1/2.jpg");
+    Icon icon3 = new ImageIcon("./src/res/images/Game1/3.jpg");
+    Icon icon4 = new ImageIcon("./src/res/images/Game1/4.jpg");
+    Icon icon5 = new ImageIcon("./src/res/images/Game1/5.jpg");
+    Icon icon6 = new ImageIcon("./src/res/images/Game1/6.jpg");
+    Icon icon7 = new ImageIcon("./src/res/images/Game1/7.jpg");
+    Icon icon8 = new ImageIcon("./src/res/images/Game1/8.jpg");
+    Icon icon9 = new ImageIcon("./src/res/images/Game1/9.jpg");
+    Icon pic = new ImageIcon("./src/res/images/Game1/flowercat.jpg");
 
     //puzzle set 2
-    Icon icon10 = new ImageIcon("./src/res/images/10.jpg");
-    Icon icon11 = new ImageIcon("./src/res/images/11.jpg");
-    Icon icon12 = new ImageIcon("./src/res/images/12.jpg");
-    Icon icon13 = new ImageIcon("./src/res/images/13.jpg");
-    Icon icon14 = new ImageIcon("./src/res/images/14.jpg");
-    Icon icon15 = new ImageIcon("./src/res/images/15.jpg");
-    Icon icon16 = new ImageIcon("./src/res/images/16.jpg");
-    Icon icon17 = new ImageIcon("./src/res/images/17.jpg");
-    Icon icon18 = new ImageIcon("./src/res/images/18.jpg");
-    Icon pic2 = new ImageIcon("./src/res/images/killua.png");
+    Icon icon10 = new ImageIcon("./src/res/images/Game1/10.jpg");
+    Icon icon11 = new ImageIcon("./src/res/images/Game1/11.jpg");
+    Icon icon12 = new ImageIcon("./src/res/images/Game1/12.jpg");
+    Icon icon13 = new ImageIcon("./src/res/images/Game1/13.jpg");
+    Icon icon14 = new ImageIcon("./src/res/images/Game1/14.jpg");
+    Icon icon15 = new ImageIcon("./src/res/images/Game1/15.jpg");
+    Icon icon16 = new ImageIcon("./src/res/images/Game1/16.jpg");
+    Icon icon17 = new ImageIcon("./src/res/images/Game1/17.jpg");
+    Icon icon18 = new ImageIcon("./src/res/images/Game1/18.jpg");
+    Icon pic2 = new ImageIcon("./src/res/images/Game1/killua.png");
 
     //puzzle set 3
-    Icon icon19 = new ImageIcon("./src/res/images/19.jpg");
-    Icon icon20 = new ImageIcon("./src/res/images/20.jpg");
-    Icon icon21 = new ImageIcon("./src/res/images/21.jpg");
-    Icon icon22 = new ImageIcon("./src/res/images/22.jpg");
-    Icon icon23 = new ImageIcon("./src/res/images/23.jpg");
-    Icon icon24 = new ImageIcon("./src/res/images/24.jpg");
-    Icon icon25 = new ImageIcon("./src/res/images/25.jpg");
-    Icon icon26 = new ImageIcon("./src/res/images/26.jpg");
-    Icon icon27 = new ImageIcon("./src/res/images/27.jpg");
-    Icon pic3 = new ImageIcon("./src/res/images/yui.jpg");
+    Icon icon19 = new ImageIcon("./src/res/images/Game1/19.jpg");
+    Icon icon20 = new ImageIcon("./src/res/images/Game1/20.jpg");
+    Icon icon21 = new ImageIcon("./src/res/images/Game1/21.jpg");
+    Icon icon22 = new ImageIcon("./src/res/images/Game1/22.jpg");
+    Icon icon23 = new ImageIcon("./src/res/images/Game1/23.jpg");
+    Icon icon24 = new ImageIcon("./src/res/images/Game1/24.jpg");
+    Icon icon25 = new ImageIcon("./src/res/images/Game1/25.jpg");
+    Icon icon26 = new ImageIcon("./src/res/images/Game1/26.jpg");
+    Icon icon27 = new ImageIcon("./src/res/images/Game1/27.jpg");
+    Icon pic3 = new ImageIcon("./src/res/images/Game1/yui.jpg");
 
     //puzzle set 4
-    Icon icon28 = new ImageIcon("./src/res/images/28.jpg");
-    Icon icon29 = new ImageIcon("./src/res/images/29.jpg");
-    Icon icon30 = new ImageIcon("./src/res/images/30.jpg");
-    Icon icon31 = new ImageIcon("./src/res/images/31.jpg");
-    Icon icon32 = new ImageIcon("./src/res/images/32.jpg");
-    Icon icon33 = new ImageIcon("./src/res/images/33.jpg");
-    Icon icon34 = new ImageIcon("./src/res/images/34.jpg");
-    Icon icon35 = new ImageIcon("./src/res/images/35.jpg");
-    Icon icon36 = new ImageIcon("./src/res/images/36.jpg");
-    Icon pic4 = new ImageIcon("./src/res/images/pika.jpg");
+    Icon icon28 = new ImageIcon("./src/res/images/Game1/28.jpg");
+    Icon icon29 = new ImageIcon("./src/res/images/Game1/29.jpg");
+    Icon icon30 = new ImageIcon("./src/res/images/Game1/30.jpg");
+    Icon icon31 = new ImageIcon("./src/res/images/Game1/31.jpg");
+    Icon icon32 = new ImageIcon("./src/res/images/Game1/32.jpg");
+    Icon icon33 = new ImageIcon("./src/res/images/Game1/33.jpg");
+    Icon icon34 = new ImageIcon("./src/res/images/Game1/34.jpg");
+    Icon icon35 = new ImageIcon("./src/res/images/Game1/35.jpg");
+    Icon icon36 = new ImageIcon("./src/res/images/Game1/36.jpg");
+    Icon pic4 = new ImageIcon("./src/res/images/Game1/pika.jpg");
 
     //puzzle set 5
-    Icon icon37 = new ImageIcon("./src/res/images/37.jpg");
-    Icon icon38 = new ImageIcon("./src/res/images/38.jpg");
-    Icon icon39 = new ImageIcon("./src/res/images/39.jpg");
-    Icon icon40 = new ImageIcon("./src/res/images/40.jpg");
-    Icon icon41 = new ImageIcon("./src/res/images/41.jpg");
-    Icon icon42 = new ImageIcon("./src/res/images/42.jpg");
-    Icon icon43 = new ImageIcon("./src/res/images/43.jpg");
-    Icon icon44 = new ImageIcon("./src/res/images/44.jpg");
-    Icon icon45 = new ImageIcon("./src/res/images/45.jpg");
-    Icon pic5 = new ImageIcon("./src/res/images/cat.jpg");
+    Icon icon37 = new ImageIcon("./src/res/images/Game1/37.jpg");
+    Icon icon38 = new ImageIcon("./src/res/images/Game1/38.jpg");
+    Icon icon39 = new ImageIcon("./src/res/images/Game1/39.jpg");
+    Icon icon40 = new ImageIcon("./src/res/images/Game1/40.jpg");
+    Icon icon41 = new ImageIcon("./src/res/images/Game1/41.jpg");
+    Icon icon42 = new ImageIcon("./src/res/images/Game1/42.jpg");
+    Icon icon43 = new ImageIcon("./src/res/images/Game1/43.jpg");
+    Icon icon44 = new ImageIcon("./src/res/images/Game1/44.jpg");
+    Icon icon45 = new ImageIcon("./src/res/images/Game1/45.jpg");
+    Icon pic5 = new ImageIcon("./src/res/images/Game1/cat.jpg");
 
     //Order of correct puzzle piece
     Icon[] correctIconsPic1 = {icon9, icon8, icon7, icon6, icon5, icon4, icon3, icon2, icon1};
@@ -180,7 +178,7 @@ public class PicPuzzle implements ActionListener{
         //add to frame
         frm.add(mainPanel);
 
-         //frame properties  
+        //frame properties  
         frm.setTitle("PicPuzzle");
         // frm.setSize(1150, 750);
         // frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -201,7 +199,6 @@ public class PicPuzzle implements ActionListener{
                 }
             }
         });
-
         
         //action listener 
         icon.addActionListener(this);
@@ -609,11 +606,11 @@ public class PicPuzzle implements ActionListener{
         }  else {
             JOptionPane.showMessageDialog(frm, "Not yet. Keep trying!", "Puzzle Incomplete", JOptionPane.WARNING_MESSAGE);
             return false;
-        }     
+        }
     }
 
     private void moveCount() {
-            moveCount++;
-            moveLabel.setText("Moves: " + moveCount);
-        }
+        moveCount++;
+        moveLabel.setText("Moves: " + moveCount);
+    }
 }
