@@ -180,14 +180,27 @@ public class PicPuzzle implements ActionListener{
         //add to frame
         frm.add(mainPanel);
 
-        //frame properties  
+         //frame properties  
         frm.setTitle("PicPuzzle");
         // frm.setSize(1150, 750);
-        frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frm.setResizable(false);    
         frm.setLocation(250, 75);
         frm.pack();
         frm.setVisible(true);
+
+        frm.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frm.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(frm, "Are you sure you want to go back? You will lose all your progress.", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                    frm.dispose();
+                    GameMenu gameMenu = new GameMenu();
+                    gameMenu.setVisible(true);
+                }
+            }
+        });
 
         
         //action listener 
