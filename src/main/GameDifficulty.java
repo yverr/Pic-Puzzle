@@ -81,7 +81,11 @@ public class GameDifficulty extends JDialog implements ActionListener{
             PicPuzzle p = new PicPuzzle();
             p.getClass();
             display(false);
+        } else if(e.getSource()==btn2){
+            PicPuzzle2 p2 = new PicPuzzle2();
+            p2.getClass();
+            display(false);
         }
-        //TO DO: Medium and Hard Game
+        //TO DO: Hard Game
     }
 }

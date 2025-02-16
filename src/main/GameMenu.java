@@ -46,7 +46,7 @@ public class GameMenu extends JFrame implements ActionListener{
         btn2.addActionListener(this);
 
         //Settings Button
-        btn3 = new JButton("   Settings   ");
+        btn3 = new JButton("     About     ");
         btn3.setPreferredSize(new Dimension(190, 30));
         btn3.setFocusable(false);
         btn3.setFont(new Font("Comic Sans",Font.BOLD,20));
