@@ -78,28 +78,27 @@ public class PicPuzzle implements ActionListener{
     Icon[] correctIconsPic4 = {icon30, icon28, icon31, icon36, icon29, icon34, icon35, icon32, icon33};
     Icon[] correctIconsPic5 = {icon37, icon40, icon44, icon41, icon39, icon45, icon38, icon43, icon42};
 
-    public PicPuzzle(){
+    int currentLevel = 1;
 
+    public PicPuzzle(){
         //assigning a random icon
         star = icon8;
 
-        //top panel, center panel container: main panel 
+        //top panel, center panel container: main panel
         mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());    
-        // mainPanel.setSize(1950, 1200);
+        mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(Color.RED);
 
         //Label 1 & 2
         lbl1 = new JLabel("Click for change icon ->");
         lbl1.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        lbl2 = new JLabel("Click for change picture ↑"); 
+        lbl2 = new JLabel("Click for change picture ↑");
         lbl2.setFont(new Font("Comic Sans", Font.BOLD, 15));
 
         //Right Icon
         icon = new JButton(icon8);
-        // icon.setIcon(ic0);
-        icon.setPreferredSize(new Dimension(90, 90));   
-        
+        icon.setPreferredSize(new Dimension(90, 90));
+
         //Wrap the text para hindi siya mag compress sa west
         var topWrapper = new JPanel(new GridBagLayout());
         topWrapper.add(lbl1);
@@ -113,7 +112,7 @@ public class PicPuzzle implements ActionListener{
         topPanel.add(topWrapper, BorderLayout.CENTER);
         topPanel.add(moveLabel, BorderLayout.WEST);
         topPanel.add(icon, BorderLayout.EAST);
-        
+
         //buttons
         btn1 = new JButton(icon1);
         btn2 = new JButton(icon2);
@@ -124,12 +123,12 @@ public class PicPuzzle implements ActionListener{
         btn7 = new JButton(icon7);
         btn8 = new JButton(icon8);
         btn9 = new JButton(icon9);
-        picture = new JButton();
+        picture = new JButton(pic);
 
         //buttons container: left panel
-        leftPanel = new  JPanel();
+        leftPanel = new JPanel();
         leftPanel.setLayout(new GridLayout(3, 3, -2, -2));
-        leftPanel.setPreferredSize(new Dimension(200, 200));        
+        leftPanel.setPreferredSize(new Dimension(200, 200));
         leftPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));
 
         //add to left panel
@@ -143,27 +142,26 @@ public class PicPuzzle implements ActionListener{
         leftPanel.add(btn8);
         leftPanel.add(btn9);
 
-        //picture    
-        picture = new JButton(pic);
-        picture.setPreferredSize(new Dimension(pic.getIconWidth(), pic.getIconHeight()));  
+        //picture
+        picture.setPreferredSize(new Dimension(pic.getIconWidth(), pic.getIconHeight()));
 
-        //picture container: right panel 
-        rightPanel = new JPanel();  
+        //picture container: right panel
+        rightPanel = new JPanel();
         rightPanel.setLayout(new BorderLayout());
-        rightPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));  
-        rightPanel.add(picture, BorderLayout.CENTER);   
-                
+        rightPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));
+        rightPanel.add(picture, BorderLayout.CENTER);
+
         //wrapping the text para hindi siya mag compress sa taas(idk ayaw niya mapunta sa taas pag wala wrapper and gridbaglayout)
         var leftWrapper = new JPanel(new GridBagLayout());
 
         //lbl2 container: bottom right panel
-        bottomPanel = new JPanel(); 
+        bottomPanel = new JPanel();
         bottomPanel = new JPanel(new BorderLayout());
         leftWrapper.add(lbl2);
-        bottomPanel.add(leftWrapper, BorderLayout.EAST);   
-        bottomPanel.setBorder(BorderFactory.createEmptyBorder(0,0,30,50));   
+        bottomPanel.add(leftWrapper, BorderLayout.EAST);
+        bottomPanel.setBorder(BorderFactory.createEmptyBorder(0,0,30,50));
 
-        //left panel, right panel, bottom panel container: center panel    
+        //left panel, right panel, bottom panel container: center panel
         centerPanel = new JPanel();
         centerPanel.setLayout(new GridLayout(1, 2));
         centerPanel.add(leftPanel);
@@ -171,18 +169,16 @@ public class PicPuzzle implements ActionListener{
         centerPanel.add(bottomPanel);
 
         //add to main panel
-        mainPanel.add(topPanel, BorderLayout.NORTH); 
+        mainPanel.add(topPanel, BorderLayout.NORTH);
         mainPanel.add(centerPanel, BorderLayout.CENTER);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-           
+
         //add to frame
         frm.add(mainPanel);
 
-        //frame properties  
+        //frame properties
         frm.setTitle("PicPuzzle");
-        // frm.setSize(1150, 750);
-        // frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frm.setResizable(false);    
+        frm.setResizable(false);
         frm.setLocation(250, 75);
         frm.pack();
         frm.setVisible(true);
@@ -199,8 +195,8 @@ public class PicPuzzle implements ActionListener{
                 }
             }
         });
-        
-        //action listener 
+
+        //action listener
         icon.addActionListener(this);
         btn1.addActionListener(this); btn2.addActionListener(this);
         btn3.addActionListener(this); btn4.addActionListener(this);
@@ -209,210 +205,157 @@ public class PicPuzzle implements ActionListener{
         btn9.addActionListener(this); picture.addActionListener(this);
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
-
         // NOTE: A button can only switch to its neighbouring buttons/the buttons besides it.
         //switch button 1 to button 2 and 4
         if(e.getSource() == btn1){
             Icon s1 = btn1.getIcon();
-                if(btn2.getIcon()==star){
-                    btn2.setIcon(s1);
-                    btn1.setIcon(star);
-                } else if(btn4.getIcon()==star){
-                    btn4.setIcon(s1);
-                    btn1.setIcon(star);
-                }
+            if(btn2.getIcon()==star){
+                btn2.setIcon(s1);
+                btn1.setIcon(star);
+            } else if(btn4.getIcon()==star){
+                btn4.setIcon(s1);
+                btn1.setIcon(star);
+            }
             moveCount();
         }
 
         //switch button 2 to button 1, 5, 3
         if(e.getSource() == btn2){
             Icon s1 = btn2.getIcon();
-                if(btn1.getIcon()==star){
-                    btn1.setIcon(s1);
-                    btn2.setIcon(star);
-                } else if(btn5.getIcon()==star){
-                    btn5.setIcon(s1);
-                    btn2.setIcon(star);
-                } else if(btn3.getIcon()==star){
-                    btn3.setIcon(s1);
-                    btn2.setIcon(star);
-                }
+            if(btn1.getIcon()==star){
+                btn1.setIcon(s1);
+                btn2.setIcon(star);
+            } else if(btn5.getIcon()==star){
+                btn5.setIcon(s1);
+                btn2.setIcon(star);
+            } else if(btn3.getIcon()==star){
+                btn3.setIcon(s1);
+                btn2.setIcon(star);
+            }
             moveCount();
         }
 
         //switch button 3 to button 2 and 6
-        if(e.getSource()==btn3){  
-            Icon s1=btn3.getIcon();  
-                if(btn2.getIcon()==star){  
-                    btn2.setIcon(s1);  
-                    btn3.setIcon(star);  
-                } else if(btn6.getIcon()==star){  
-                    btn6.setIcon(s1);  
-                    btn3.setIcon(star);  
-                } 
-            moveCount(); 
+        if(e.getSource()==btn3){
+            Icon s1=btn3.getIcon();
+            if(btn2.getIcon()==star){
+                btn2.setIcon(s1);
+                btn3.setIcon(star);
+            } else if(btn6.getIcon()==star){
+                btn6.setIcon(s1);
+                btn3.setIcon(star);
+            }
+            moveCount();
         }
 
         //switch button 4 to 1, 5, 7
-        if(e.getSource()==btn4){  
-            Icon s1=btn4.getIcon();  
-                if(btn1.getIcon()==star){  
-                    btn1.setIcon(s1);  
-                    btn4.setIcon(star);  
-                } else if(btn5.getIcon()==star){  
-                    btn5.setIcon(s1);  
-                    btn4.setIcon(star);  
-                } else if(btn7.getIcon()==star){  
-                    btn7.setIcon(s1);  
-                    btn4.setIcon(star);  
-                }  
+        if(e.getSource()==btn4){
+            Icon s1=btn4.getIcon();
+            if(btn1.getIcon()==star){
+                btn1.setIcon(s1);
+                btn4.setIcon(star);
+            } else if(btn5.getIcon()==star){
+                btn5.setIcon(s1);
+                btn4.setIcon(star);
+            } else if(btn7.getIcon()==star){
+                btn7.setIcon(s1);
+                btn4.setIcon(star);
+            }
             moveCount();
         }
 
         //switch button 5 to 2, 4, 6, 8
-        if(e.getSource()==btn5){  
-            Icon s1=btn5.getIcon();  
-                if(btn2.getIcon()==star){  
-                    btn2.setIcon(s1);  
-                    btn5.setIcon(star);  
-                } else if(btn4.getIcon()==star){  
-                    btn4.setIcon(s1);  
-                    btn5.setIcon(star);  
-                } else if(btn6.getIcon()==star){  
-                    btn6.setIcon(s1);  
-                    btn5.setIcon(star);  
-                } else if(btn8.getIcon()==star){  
-                    btn8.setIcon(s1);  
-                    btn5.setIcon(star);  
-                }  
+        if(e.getSource()==btn5){
+            Icon s1=btn5.getIcon();
+            if(btn2.getIcon()==star){
+                btn2.setIcon(s1);
+                btn5.setIcon(star);
+            } else if(btn4.getIcon()==star){
+                btn4.setIcon(s1);
+                btn5.setIcon(star);
+            } else if(btn6.getIcon()==star){
+                btn6.setIcon(s1);
+                btn5.setIcon(star);
+            } else if(btn8.getIcon()==star){
+                btn8.setIcon(s1);
+                btn5.setIcon(star);
+            }
             moveCount();
         }
 
         //switch button 6 to 3, 5, 9
-        if(e.getSource()==btn6){  
-            Icon s1=btn6.getIcon();  
-                if(btn3.getIcon()==star){  
-                    btn3.setIcon(s1);  
-                    btn6.setIcon(star);  
-                } else if(btn5.getIcon()==star){  
-                    btn5.setIcon(s1);  
-                    btn6.setIcon(star);  
-                } else if(btn9.getIcon()==star){  
-                    btn9.setIcon(s1);  
-                    btn6.setIcon(star);  
-                }  
+        if(e.getSource()==btn6){
+            Icon s1=btn6.getIcon();
+            if(btn3.getIcon()==star){
+                btn3.setIcon(s1);
+                btn6.setIcon(star);
+            } else if(btn5.getIcon()==star){
+                btn5.setIcon(s1);
+                btn6.setIcon(star);
+            } else if(btn9.getIcon()==star){
+                btn9.setIcon(s1);
+                btn6.setIcon(star);
+            }
             moveCount();
         }
 
         //switch button 7 to 4 and 8
-        if(e.getSource()==btn7){  
-            Icon s1=btn7.getIcon();  
-                if(btn4.getIcon()==star){  
-                    btn4.setIcon(s1);  
-                    btn7.setIcon(star);  
-                } else if(btn8.getIcon()==star){  
-                    btn8.setIcon(s1);  
-                    btn7.setIcon(star);  
-                }  
+        if(e.getSource()==btn7){
+            Icon s1=btn7.getIcon();
+            if(btn4.getIcon()==star){
+                btn4.setIcon(s1);
+                btn7.setIcon(star);
+            } else if(btn8.getIcon()==star){
+                btn8.setIcon(s1);
+                btn7.setIcon(star);
+            }
             moveCount();
-        } 
+        }
 
         //switch button 8 to 7, 5, 9
-        if(e.getSource()==btn8){  
-            Icon s1=btn8.getIcon();  
-                if(btn7.getIcon()==star){  
-                    btn7.setIcon(s1);  
-                    btn8.setIcon(star);  
-                } else if(btn5.getIcon()==star){  
-                    btn5.setIcon(s1);  
-                    btn8.setIcon(star);  
-                } else if(btn9.getIcon()==star){  
-                    btn9.setIcon(s1);  
-                    btn8.setIcon(star);  
-                }
+        if(e.getSource()==btn8){
+            Icon s1=btn8.getIcon();
+            if(btn7.getIcon()==star){
+                btn7.setIcon(s1);
+                btn8.setIcon(star);
+            } else if(btn5.getIcon()==star){
+                btn5.setIcon(s1);
+                btn8.setIcon(star);
+            } else if(btn9.getIcon()==star){
+                btn9.setIcon(s1);
+                btn8.setIcon(star);
+            }
             moveCount();
-        }  
+        }
 
         //switch button 9 to 8 and 6
-        if(e.getSource()==btn9){  
-            Icon s1=btn9.getIcon();  
-                if(btn8.getIcon()==star){  
-                    btn8.setIcon(s1);  
-                    btn9.setIcon(star);  
-                } else if(btn6.getIcon()==star){  
-                    btn6.setIcon(s1);  
-                    btn9.setIcon(star);  
-                }  
+        if(e.getSource()==btn9){
+            Icon s1=btn9.getIcon();
+            if(btn8.getIcon()==star){
+                btn8.setIcon(s1);
+                btn9.setIcon(star);
+            } else if(btn6.getIcon()==star){
+                btn6.setIcon(s1);
+                btn9.setIcon(star);
+            }
             moveCount();
-        }  
+        }
 
         //change puzzle set
         if(e.getSource()==picture){
-            Icon s1 = picture.getIcon();   
-            if(s1==pic && checkPuzzleSolved()){
-                picture.setIcon(pic2);
-                btn1.setIcon(icon10);
-                btn2.setIcon(icon11);
-                btn3.setIcon(icon12);
-                btn4.setIcon(icon13);
-                btn5.setIcon(icon14);
-                btn6.setIcon(icon15);
-                btn7.setIcon(icon16);
-                btn8.setIcon(icon17);
-                btn9.setIcon(icon18);
-                icon.setIcon(icon15);
-                star = icon.getIcon();
-            } else if(s1==pic2 && checkPuzzleSolved()){
-                picture.setIcon(pic3);
-                btn1.setIcon(icon19);
-                btn2.setIcon(icon20);
-                btn3.setIcon(icon21);
-                btn4.setIcon(icon22);
-                btn5.setIcon(icon23);
-                btn6.setIcon(icon24);
-                btn7.setIcon(icon25);
-                btn8.setIcon(icon26);
-                btn9.setIcon(icon27);
-                icon.setIcon(icon20);
-                star = icon.getIcon(); 
-            } else if(s1==pic3 && checkPuzzleSolved()){
-                picture.setIcon(pic4);
-                btn1.setIcon(icon28);
-                btn2.setIcon(icon29);
-                btn3.setIcon(icon30);
-                btn4.setIcon(icon31);
-                btn5.setIcon(icon32);
-                btn6.setIcon(icon33);
-                btn7.setIcon(icon34);
-                btn8.setIcon(icon35);
-                btn9.setIcon(icon36);
-                icon.setIcon(icon32);
-                star = icon.getIcon();
-            } else if(s1==pic4 && checkPuzzleSolved()){
-                picture.setIcon(pic5);
-                btn1.setIcon(icon37);
-                btn2.setIcon(icon38);
-                btn3.setIcon(icon39);
-                btn4.setIcon(icon40);
-                btn5.setIcon(icon41);
-                btn6.setIcon(icon42);
-                btn7.setIcon(icon43);
-                btn8.setIcon(icon44);
-                btn9.setIcon(icon45);
-                icon.setIcon(icon44);
-                star = icon.getIcon();
-            } else if(s1==pic5){
+            Icon s1 = picture.getIcon();
+            if(s1==pic && checkPuzzleSolved()) currentLevel++;
+            else if(s1==pic2 && checkPuzzleSolved()) currentLevel++;
+            else if(s1==pic3 && checkPuzzleSolved()) currentLevel++;
+            else if(s1==pic4 && checkPuzzleSolved()) currentLevel++;
+            else if(s1==pic5){
                 JOptionPane.showMessageDialog(frm, "You solved all the puzzles!\nYou've made "+ moveCount + " moves in total!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-                //TO DO: add a JDialog, back to game menu or restart option.
-
                 frm.dispose();
                 GameMenu gameMenu = new GameMenu();
                 gameMenu.setVisible(true);
-            } 
+            }
         }
 
         //icon switches from the first icon to the last icon with every click(basically, it's just looping)
@@ -428,10 +371,10 @@ public class PicPuzzle implements ActionListener{
                     star = icon2;// star switches to icon2 as well
                 } else if(s2==icon2){
                     icon.setIcon(icon3);//repeat
-                     star = icon3;   
+                    star = icon3;
                 }else if(s2==icon3){
                     icon.setIcon(icon4);
-                     star = icon4;
+                    star = icon4;
                 }else if(s2==icon4){
                     icon.setIcon(icon5);
                     star = icon5;
@@ -445,9 +388,9 @@ public class PicPuzzle implements ActionListener{
                     icon.setIcon(icon8);
                     star = icon8;
                 } else if(s2==icon8){
-                    icon.setIcon(icon9); 
+                    icon.setIcon(icon9);
                     star = icon9;
-                } 
+                }
             } else if (picture.getIcon() == pic2){
                 Icon s2 = icon.getIcon();
                 if (s2==icon18) {
@@ -488,7 +431,7 @@ public class PicPuzzle implements ActionListener{
                     star = icon20;
                 } else if (s2 == icon20) {
                     icon.setIcon(icon21);
-                    star = icon21;  
+                    star = icon21;
                 } else if (s2 == icon21) {
                     icon.setIcon(icon22);
                     star = icon22;
@@ -578,20 +521,15 @@ public class PicPuzzle implements ActionListener{
             btn4.getIcon(), btn5.getIcon(), btn6.getIcon(),
             btn7.getIcon(), btn8.getIcon(), btn9.getIcon()
         };
-
+    
         Icon[] correctIcon = null;
         Icon currentPic = picture.getIcon();
-        if(currentPic == pic)
-            correctIcon = correctIconsPic1;
-        else if(currentPic == pic2)
-            correctIcon = correctIconsPic2;
-        else if(currentPic == pic3)
-            correctIcon = correctIconsPic3;
-        else if(currentPic == pic4)
-            correctIcon = correctIconsPic4;
-        else if(currentPic == pic5)
-            correctIcon = correctIconsPic5;
-
+        if(currentPic == pic) correctIcon = correctIconsPic1;
+        else if(currentPic == pic2) correctIcon = correctIconsPic2;
+        else if(currentPic == pic3) correctIcon = correctIconsPic3;
+        else if(currentPic == pic4) correctIcon = correctIconsPic4;
+        else if(currentPic == pic5) correctIcon = correctIconsPic5;
+    
         boolean isSolved = true;
         for (int i = 0; i < currentIcons.length; i++) {
             if (currentIcons[i] != correctIcon[i]) {
@@ -599,14 +537,78 @@ public class PicPuzzle implements ActionListener{
                 break;
             }
         }
-
+    
         if (isSolved) {
             JOptionPane.showMessageDialog(frm, "You solved the puzzle! Next!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+            GameDifficulty gameDifficulty = new GameDifficulty(frm, this);
+            gameDifficulty.enableLevel(currentLevel + 1); 
+            gameDifficulty.setVisible(true);
             return true;
         }  else {
             JOptionPane.showMessageDialog(frm, "Not yet. Keep trying!", "Puzzle Incomplete", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+    }
+
+    // useless methods, im too lazy to change it back
+    public void changeToLevel2() {
+        picture.setIcon(pic2);
+        btn1.setIcon(icon10);
+        btn2.setIcon(icon11);
+        btn3.setIcon(icon12);
+        btn4.setIcon(icon13);
+        btn5.setIcon(icon14);
+        btn6.setIcon(icon15);
+        btn7.setIcon(icon16);
+        btn8.setIcon(icon17);
+        btn9.setIcon(icon18);
+        icon.setIcon(icon15);
+        star = icon.getIcon();
+    }
+
+    public void changeToLevel3() {
+        picture.setIcon(pic3);
+        btn1.setIcon(icon19);
+        btn2.setIcon(icon20);
+        btn3.setIcon(icon21);
+        btn4.setIcon(icon22);
+        btn5.setIcon(icon23);
+        btn6.setIcon(icon24);
+        btn7.setIcon(icon25);
+        btn8.setIcon(icon26);
+        btn9.setIcon(icon27);
+        icon.setIcon(icon20);
+        star = icon.getIcon();
+    }
+
+    public void changeToLevel4() {
+        picture.setIcon(pic4);
+        btn1.setIcon(icon28);
+        btn2.setIcon(icon29);
+        btn3.setIcon(icon30);
+        btn4.setIcon(icon31);
+        btn5.setIcon(icon32);
+        btn6.setIcon(icon33);
+        btn7.setIcon(icon34);
+        btn8.setIcon(icon35);
+        btn9.setIcon(icon36);
+        icon.setIcon(icon32);
+        star = icon.getIcon();
+    }
+
+    public void changeToLevel5() {
+        picture.setIcon(pic5);
+        btn1.setIcon(icon37);
+        btn2.setIcon(icon38);
+        btn3.setIcon(icon39);
+        btn4.setIcon(icon40);
+        btn5.setIcon(icon41);
+        btn6.setIcon(icon42);
+        btn7.setIcon(icon43);
+        btn8.setIcon(icon44);
+        btn9.setIcon(icon45);
+        icon.setIcon(icon44);
+        star = icon.getIcon();
     }
 
     private void moveCount() {

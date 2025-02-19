@@ -77,15 +77,25 @@ public class GameMenu extends JFrame implements ActionListener{
         setSize(1150,760);
         setLocation(190, 35);
         setResizable(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(e.getWindow(), "Are you sure you want to close the game?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btn){
-            GameDifficulty g = new GameDifficulty(this); 
+            GameDifficulty g = new GameDifficulty(this, null); 
             g.display(true);
             this.setVisible(false);
         }
