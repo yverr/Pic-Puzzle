@@ -16,7 +16,7 @@ public class GameMenu extends JFrame implements ActionListener{
         info = new JButton("!");
         info.setFont(new Font("Comic Sans",Font.BOLD,15));
         info.setSize( 30, 30);
-        info.setToolTipText("Info");
+        info.setToolTipText("About");
         info.setFocusPainted(false);
         info.addActionListener(this);
 
@@ -46,7 +46,7 @@ public class GameMenu extends JFrame implements ActionListener{
         btn2.addActionListener(this);
 
         //Settings Button
-        btn3 = new JButton("     About     ");
+        btn3 = new JButton("   Settings   ");
         btn3.setPreferredSize(new Dimension(190, 30));
         btn3.setFocusable(false);
         btn3.setFont(new Font("Comic Sans",Font.BOLD,20));
@@ -95,9 +95,67 @@ public class GameMenu extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btn){
-            GameDifficulty g = new GameDifficulty(this, null); 
+            Levels g = new Levels(this, null); 
             g.display(true);
             this.setVisible(false);
+        } else if (e.getSource()==btn2){
+            HowToPlay h = new HowToPlay(this);
+            h.display();
+        }else if (e.getSource()==btn3){
+            Settings s = new Settings(this, this);
+            s.display();
         }
     }
+
+    public void theme() {
+        // Set background color to dark
+        getContentPane().setBackground(Color.decode("#2f2f2f"));
+        topPanel.setBackground(Color.decode("#2f2f2f"));
+        centerPanel.setBackground(Color.decode("#2f2f2f"));
+    
+        // Set text color to light
+        label.setForeground(Color.decode("#ffffff"));
+        btn.setForeground(Color.decode("#ffffff"));
+        btn2.setForeground(Color.decode("#ffffff"));
+        btn3.setForeground(Color.decode("#ffffff"));
+        info.setForeground(Color.decode("#ffffff"));
+    
+        // Set button background color to dark
+        btn.setBackground(Color.decode("#4f4f4f"));
+        btn2.setBackground(Color.decode("#4f4f4f"));
+        btn3.setBackground(Color.decode("#4f4f4f"));
+        info.setBackground(Color.decode("#4f4f4f"));
+    
+        // Set button border color to light
+        btn.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
+        btn2.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
+        btn3.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
+        info.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
+    }
+
+    public void lightTheme() {
+    // Set background color to light
+    getContentPane().setBackground(Color.decode("#f2f2f2"));
+    topPanel.setBackground(Color.decode("#f2f2f2"));
+    centerPanel.setBackground(Color.decode("#f2f2f2"));
+
+    // Set text color to dark
+    label.setForeground(Color.decode("#333333"));
+    btn.setForeground(Color.decode("#333333"));
+    btn2.setForeground(Color.decode("#333333"));
+    btn3.setForeground(Color.decode("#333333"));
+    info.setForeground(Color.decode("#333333"));
+
+    // Set button background color to light
+    btn.setBackground(Color.decode("#ffffff"));
+    btn2.setBackground(Color.decode("#ffffff"));
+    btn3.setBackground(Color.decode("#ffffff"));
+    info.setBackground(Color.decode("#ffffff"));
+
+    // Set button border color to dark
+    btn.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+    btn2.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+    btn3.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+    info.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+}
 }

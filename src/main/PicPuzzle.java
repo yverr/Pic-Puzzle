@@ -187,7 +187,8 @@ public class PicPuzzle implements ActionListener{
         frm.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(frm, "Are you sure you want to go back? You will lose all your progress.", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                int result = JOptionPane.showConfirmDialog(frm, "Are you sure you want to go back? You will lose all your progress.", 
+                "Confirm Exit", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.YES_OPTION) {
                     frm.dispose();
                     GameMenu gameMenu = new GameMenu();
@@ -345,13 +346,62 @@ public class PicPuzzle implements ActionListener{
 
         //change puzzle set
         if(e.getSource()==picture){
-            Icon s1 = picture.getIcon();
-            if(s1==pic && checkPuzzleSolved()) currentLevel++;
-            else if(s1==pic2 && checkPuzzleSolved()) currentLevel++;
-            else if(s1==pic3 && checkPuzzleSolved()) currentLevel++;
-            else if(s1==pic4 && checkPuzzleSolved()) currentLevel++;
-            else if(s1==pic5){
-                JOptionPane.showMessageDialog(frm, "You solved all the puzzles!\nYou've made "+ moveCount + " moves in total!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+            Icon s1 = picture.getIcon();   
+            if(s1==pic && checkPuzzleSolved()){
+                picture.setIcon(pic2);
+                btn1.setIcon(icon10);
+                btn2.setIcon(icon11);
+                btn3.setIcon(icon12);
+                btn4.setIcon(icon13);
+                btn5.setIcon(icon14);
+                btn6.setIcon(icon15);
+                btn7.setIcon(icon16);
+                btn8.setIcon(icon17);
+                btn9.setIcon(icon18);
+                icon.setIcon(icon15);
+                star = icon.getIcon();
+            } else if(s1==pic2 && checkPuzzleSolved()){
+                picture.setIcon(pic3);
+                btn1.setIcon(icon19);
+                btn2.setIcon(icon20);
+                btn3.setIcon(icon21);
+                btn4.setIcon(icon22);
+                btn5.setIcon(icon23);
+                btn6.setIcon(icon24);
+                btn7.setIcon(icon25);
+                btn8.setIcon(icon26);
+                btn9.setIcon(icon27);
+                icon.setIcon(icon20);
+                star = icon.getIcon(); 
+            } else if(s1==pic3 && checkPuzzleSolved()){
+                picture.setIcon(pic4);
+                btn1.setIcon(icon28);
+                btn2.setIcon(icon29);
+                btn3.setIcon(icon30);
+                btn4.setIcon(icon31);
+                btn5.setIcon(icon32);
+                btn6.setIcon(icon33);
+                btn7.setIcon(icon34);
+                btn8.setIcon(icon35);
+                btn9.setIcon(icon36);
+                icon.setIcon(icon32);
+                star = icon.getIcon();
+            } else if(s1==pic4 && checkPuzzleSolved()){
+                picture.setIcon(pic5);
+                btn1.setIcon(icon37);
+                btn2.setIcon(icon38);
+                btn3.setIcon(icon39);
+                btn4.setIcon(icon40);
+                btn5.setIcon(icon41);
+                btn6.setIcon(icon42);
+                btn7.setIcon(icon43);
+                btn8.setIcon(icon44);
+                btn9.setIcon(icon45);
+                icon.setIcon(icon44);
+                star = icon.getIcon();
+            } else if(s1==pic5){
+                JOptionPane.showMessageDialog(frm, "You solved all the puzzles!\nYou've made "+ moveCount + " moves in total!", 
+                "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
                 frm.dispose();
                 GameMenu gameMenu = new GameMenu();
                 gameMenu.setVisible(true);
@@ -540,7 +590,7 @@ public class PicPuzzle implements ActionListener{
     
         if (isSolved) {
             JOptionPane.showMessageDialog(frm, "You solved the puzzle! Next!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-            GameDifficulty gameDifficulty = new GameDifficulty(frm, this);
+            Levels gameDifficulty = new Levels(frm, this);
             gameDifficulty.enableLevel(currentLevel + 1); 
             gameDifficulty.setVisible(true);
             return true;
@@ -548,67 +598,6 @@ public class PicPuzzle implements ActionListener{
             JOptionPane.showMessageDialog(frm, "Not yet. Keep trying!", "Puzzle Incomplete", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-    }
-
-    // useless methods, im too lazy to change it back
-    public void changeToLevel2() {
-        picture.setIcon(pic2);
-        btn1.setIcon(icon10);
-        btn2.setIcon(icon11);
-        btn3.setIcon(icon12);
-        btn4.setIcon(icon13);
-        btn5.setIcon(icon14);
-        btn6.setIcon(icon15);
-        btn7.setIcon(icon16);
-        btn8.setIcon(icon17);
-        btn9.setIcon(icon18);
-        icon.setIcon(icon15);
-        star = icon.getIcon();
-    }
-
-    public void changeToLevel3() {
-        picture.setIcon(pic3);
-        btn1.setIcon(icon19);
-        btn2.setIcon(icon20);
-        btn3.setIcon(icon21);
-        btn4.setIcon(icon22);
-        btn5.setIcon(icon23);
-        btn6.setIcon(icon24);
-        btn7.setIcon(icon25);
-        btn8.setIcon(icon26);
-        btn9.setIcon(icon27);
-        icon.setIcon(icon20);
-        star = icon.getIcon();
-    }
-
-    public void changeToLevel4() {
-        picture.setIcon(pic4);
-        btn1.setIcon(icon28);
-        btn2.setIcon(icon29);
-        btn3.setIcon(icon30);
-        btn4.setIcon(icon31);
-        btn5.setIcon(icon32);
-        btn6.setIcon(icon33);
-        btn7.setIcon(icon34);
-        btn8.setIcon(icon35);
-        btn9.setIcon(icon36);
-        icon.setIcon(icon32);
-        star = icon.getIcon();
-    }
-
-    public void changeToLevel5() {
-        picture.setIcon(pic5);
-        btn1.setIcon(icon37);
-        btn2.setIcon(icon38);
-        btn3.setIcon(icon39);
-        btn4.setIcon(icon40);
-        btn5.setIcon(icon41);
-        btn6.setIcon(icon42);
-        btn7.setIcon(icon43);
-        btn8.setIcon(icon44);
-        btn9.setIcon(icon45);
-        icon.setIcon(icon44);
-        star = icon.getIcon();
     }
 
     private void moveCount() {
