@@ -107,26 +107,25 @@ public class GameMenu extends JFrame implements ActionListener{
         }
     }
 
+    // still in progress
+
+    // Set background color to dark
     public void theme() {
-        // Set background color to dark
         getContentPane().setBackground(Color.decode("#2f2f2f"));
         topPanel.setBackground(Color.decode("#2f2f2f"));
         centerPanel.setBackground(Color.decode("#2f2f2f"));
     
-        // Set text color to light
         label.setForeground(Color.decode("#ffffff"));
         btn.setForeground(Color.decode("#ffffff"));
         btn2.setForeground(Color.decode("#ffffff"));
         btn3.setForeground(Color.decode("#ffffff"));
         info.setForeground(Color.decode("#ffffff"));
     
-        // Set button background color to dark
         btn.setBackground(Color.decode("#4f4f4f"));
         btn2.setBackground(Color.decode("#4f4f4f"));
         btn3.setBackground(Color.decode("#4f4f4f"));
         info.setBackground(Color.decode("#4f4f4f"));
     
-        // Set button border color to light
         btn.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
         btn2.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
         btn3.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
@@ -134,28 +133,24 @@ public class GameMenu extends JFrame implements ActionListener{
     }
 
     public void lightTheme() {
-    // Set background color to light
-    getContentPane().setBackground(Color.decode("#f2f2f2"));
-    topPanel.setBackground(Color.decode("#f2f2f2"));
-    centerPanel.setBackground(Color.decode("#f2f2f2"));
+        getContentPane().setBackground(Color.decode("#f2f2f2"));
+        topPanel.setBackground(Color.decode("#f2f2f2"));
+        centerPanel.setBackground(Color.decode("#f2f2f2"));
 
-    // Set text color to dark
-    label.setForeground(Color.decode("#333333"));
-    btn.setForeground(Color.decode("#333333"));
-    btn2.setForeground(Color.decode("#333333"));
-    btn3.setForeground(Color.decode("#333333"));
-    info.setForeground(Color.decode("#333333"));
+        label.setForeground(Color.decode("#333333"));
+        btn.setForeground(Color.decode("#333333"));
+        btn2.setForeground(Color.decode("#333333"));
+        btn3.setForeground(Color.decode("#333333"));
+        info.setForeground(Color.decode("#333333"));
 
-    // Set button background color to light
-    btn.setBackground(Color.decode("#ffffff"));
-    btn2.setBackground(Color.decode("#ffffff"));
-    btn3.setBackground(Color.decode("#ffffff"));
-    info.setBackground(Color.decode("#ffffff"));
+        btn.setBackground(Color.decode("#ffffff"));
+        btn2.setBackground(Color.decode("#ffffff"));
+        btn3.setBackground(Color.decode("#ffffff"));
+        info.setBackground(Color.decode("#ffffff"));
 
-    // Set button border color to dark
-    btn.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-    btn2.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-    btn3.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-    info.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-}
+        btn.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+        btn2.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+        btn3.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+        info.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
+    }
 }

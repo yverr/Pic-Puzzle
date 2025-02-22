@@ -71,7 +71,7 @@ public class PicPuzzle implements ActionListener{
     Icon icon45 = new ImageIcon("./src/res/images/Game1/45.jpg");
     Icon pic5 = new ImageIcon("./src/res/images/Game1/cat.jpg");
 
-    //Order of correct puzzle piece
+    //Order of correct puzzle pieces
     Icon[] correctIconsPic1 = {icon9, icon8, icon7, icon6, icon5, icon4, icon3, icon2, icon1};
     Icon[] correctIconsPic2 = {icon18, icon17, icon16, icon15, icon14, icon13, icon12, icon11, icon10};
     Icon[] correctIconsPic3 = {icon26, icon24, icon25, icon19, icon21, icon20, icon23, icon27, icon22};
@@ -208,7 +208,17 @@ public class PicPuzzle implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // NOTE: A button can only switch to its neighbouring buttons/the buttons besides it.
+        /* 
+        * NOTE: A button can only switch to its neighbouring buttons/the buttons besides it. 
+        * 
+        *  star            This is a placeholder to change icons. Any icon that's in star icon can move in the puzzle.
+        *                  The icon held in star icon can be changed through the icon button on the top right.
+        *  s1              This is fetching the icon of the clicked button, then passes it to the button that it was
+        *                  previously in.                
+        *  moveCount()     This is a method that can be seen below the entire code. Every time an action happens, 
+        *                  this method increments.
+        *
+        */ 
         //switch button 1 to button 2 and 4
         if(e.getSource() == btn1){
             Icon s1 = btn1.getIcon();
@@ -344,7 +354,16 @@ public class PicPuzzle implements ActionListener{
             moveCount();
         }
 
-        //change puzzle set
+        /*
+         * changes the set of puzzle pieces to the next set of pieces.
+         * 
+         * if(s1==pic && checkPuzzleSolved())     checks that if the current picture is the first set
+         *                                        and if the puzzle is in the right order(is solved).
+         *                                        If the puzzle is the first set, it changes to the second.
+         * checkPuzzleSolved()                    Is a method that can be seen below. It uses arrays to compare the 
+         *                                        the current order of icons to the correct order of icons. It 
+         *                                        gives a prompt of its results then returns true if the puzzle is solved.         
+         */
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
             if(s1==pic && checkPuzzleSolved()){
@@ -408,19 +427,29 @@ public class PicPuzzle implements ActionListener{
             }
         }
 
-        //icon switches from the first icon to the last icon with every click(basically, it's just looping)
+        /* 
+        * icon switches from the first icon to the last icon with every click (basically, it's just looping)
+        *
+        * if(picture.getIcon()==pic)   checks which set of puzzle is currently being played. If the puzzle that was just
+        *                              solved is the first one, it will switch to the second set of icons looping through this button.
+        * if(s2==icon9)                
+        * icon.setIcon(icon1);         if the icon(icon9) is clicked, the icon becomes (icon1)
+        * star = icon1;                star switches to icon1 as well to switch puzzles
+        *
+        * the next else ifs simply loops through the icons: 
+        * icon1 -> icon2 -> icon3 -> icon4 -> icon5 -> icon6 -> icon7 -> icon8 -> icon9 -> icon1 -> repeat
+        */
         if(e.getSource()== icon ){
-            //checking kung alin set ng puzzle icons ang mag display sa icon based sa pic, pic2, pic3, pic4, pic5
             if(picture.getIcon()==pic){
                 Icon s2 = icon.getIcon();
                 if(s2==icon9){
-                    icon.setIcon(icon1); //if the icon(icon9) is clicked, the icon becomes (icon1)
-                    star = icon1;// star switches to icon1 as well
+                    icon.setIcon(icon1); 
+                    star = icon1;
                 } else if(s2==icon1){
-                    icon.setIcon(icon2); //if the icon(icon1) is clicked, the icon becomes (icon2)
-                    star = icon2;// star switches to icon2 as well
+                    icon.setIcon(icon2); 
+                    star = icon2;
                 } else if(s2==icon2){
-                    icon.setIcon(icon3);//repeat
+                    icon.setIcon(icon3);
                     star = icon3;
                 }else if(s2==icon3){
                     icon.setIcon(icon4);
@@ -591,7 +620,7 @@ public class PicPuzzle implements ActionListener{
         if (isSolved) {
             JOptionPane.showMessageDialog(frm, "You solved the puzzle! Next!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
             Levels gameDifficulty = new Levels(frm, this);
-            gameDifficulty.enableLevel(currentLevel + 1); 
+            gameDifficulty.enableLevel(currentLevel + 1); //next level
             gameDifficulty.setVisible(true);
             return true;
         }  else {

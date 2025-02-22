@@ -7,7 +7,6 @@ public class Levels extends JDialog implements ActionListener{
     JButton btn1, btn2, btn3, btn4, btn5, close;
     JPanel topPanel, centerPanel;
     private PicPuzzle p;
-    // private JFrame disposeWindow;
     
         public Levels(JFrame parent, PicPuzzle p) {
             super(parent, "Game Difficulty", true);
@@ -95,7 +94,7 @@ public class Levels extends JDialog implements ActionListener{
     }
 
     public void enableLevel(int level) {
-        btn1.setEnabled(false); //this thing isnt permanently disabling if ion put this here 
+        btn1.setEnabled(false); 
         switch (level) {
             case 2 -> btn2.setEnabled(true);
             case 3 -> btn3.setEnabled(true);
