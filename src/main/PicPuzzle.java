@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+//code too repetitive, needs refactoring(if possible)
 public class PicPuzzle implements ActionListener{
     JFrame frm = new JFrame();
     JLabel lbl1, lbl2;
@@ -432,16 +433,19 @@ public class PicPuzzle implements ActionListener{
         }
 
         /* 
-        * icon switches from the first icon to the last icon with every click (basically, it's just looping)
+        * the icon on the top right switches from the first icon to the last icon with every click (basically, it's just looping)
         *
-        * if(picture.getIcon()==pic)   checks which set of puzzle is currently being played. If the puzzle that was just
-        *                              solved is the first one, it will switch to the second set of icons looping through this button.
-        * if(s2==icon9)                
-        * icon.setIcon(icon1);         if the icon(icon9) is clicked, the icon becomes (icon1)
-        * star = icon1;                star switches to icon1 as well to switch puzzles
+        * if(picture.getIcon()==pic)   Based on the icon in the picture button, it determines which set of puzzle you are in.
+        *                              If the current icon in the picture button is the first pic, then you are on the first set of puzzle.
+        *                              Once its determined that youre on the first set, the icon button will loop through ONLY the icons of 
+        *                              the first set of the puzzle.
         *
-        * the next else ifs simply loops through the icons: 
+        * basically: 
+        * if the current icon in the picture button is pic 1:
         * icon1 -> icon2 -> icon3 -> icon4 -> icon5 -> icon6 -> icon7 -> icon8 -> icon9 -> icon1 -> repeat
+        * if the current icon in the picture button is pic 2:
+        * icon10 -> icon11 -> icon12 -> icon13 -> icon14 -> icon15 -> icon16 -> icon17 -> icon18 -> icon10 -> repeat
+        * goes the same for the rest of the pic3-pic5 and the icons
         */
         if(e.getSource()== icon ){
             if(picture.getIcon()==pic){
@@ -598,22 +602,25 @@ public class PicPuzzle implements ActionListener{
         }
     }
 
+    //when this method is called, it returns a boolean (true or false)
     private boolean checkPuzzleSolved() {
         Icon[] currentIcons = {
             btn1.getIcon(), btn2.getIcon(), btn3.getIcon(),
             btn4.getIcon(), btn5.getIcon(), btn6.getIcon(),
             btn7.getIcon(), btn8.getIcon(), btn9.getIcon()
-        };
+        }; // fetching the current icons of the buttons, the order of puzzles that the player had done.
     
-        Icon[] correctIcon = null;
-        Icon currentPic = picture.getIcon();
-        if(currentPic == pic) correctIcon = correctIconsPic1;
-        else if(currentPic == pic2) correctIcon = correctIconsPic2;
-        else if(currentPic == pic3) correctIcon = correctIconsPic3;
-        else if(currentPic == pic4) correctIcon = correctIconsPic4;
+        Icon[] correctIcon = null; //place holder
+        Icon currentPic = picture.getIcon(); // fetching the icon of the picture btn again to see which set of puzzle the player is currently on.
+        if(currentPic == pic) correctIcon = correctIconsPic1; // if the currentPic is pic(the 1st set), u put the correct order of the 1st set on 'correctIcon'.
+        else if(currentPic == pic2) correctIcon = correctIconsPic2; // if the currentPic is pic2(the 2nd set), u put the correct order of the 2nd set on 'correctIcon'.
+        else if(currentPic == pic3) correctIcon = correctIconsPic3; // if the currentPic is pic3(the 3rd set), u put the correct order of the 3rd set on 'correctIcon'.
+        else if(currentPic == pic4) correctIcon = correctIconsPic4; // same thing
         else if(currentPic == pic5) correctIcon = correctIconsPic5;
     
         boolean isSolved = true;
+        // now that you have gotten the correct order of items for the current puzzle,
+        // u compare the current order of icons to the the correct order of icons
         for (int i = 0; i < currentIcons.length; i++) {
             if (currentIcons[i] != correctIcon[i]) {
                 isSolved = false;
@@ -621,10 +628,11 @@ public class PicPuzzle implements ActionListener{
             }
         }
     
+        //self explainatory
         if (isSolved) {
             JOptionPane.showMessageDialog(frm, "You solved the puzzle! Next!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
             Levels gameDifficulty = new Levels(frm, this);
-            gameDifficulty.enableLevel(currentLevel); //next level
+            gameDifficulty.enableLevel(currentLevel);  //On level class
             gameDifficulty.setVisible(true);
             return true;
         }  else {
