@@ -74,7 +74,7 @@ public class Settings extends JDialog implements ActionListener{
     }
 
 
-    //deleting theme feature
+    //deleting theme feature, volume has no function yet.
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet.");
