@@ -101,56 +101,14 @@ public class GameMenu extends JFrame implements ActionListener{
         } else if (e.getSource()==btn2){
             HowToPlay h = new HowToPlay(this);
             h.display();
-        }else if (e.getSource()==btn3){
+        } else if (e.getSource()==btn3){
             Settings s = new Settings(this, this);
             s.display();
+        } else if (e.getSource()==info){
+            Info i = new Info(this);
+            i.display();
         }
     }
 
-    // still in progress
-
-    // Set background color to dark
-    public void theme() {
-        getContentPane().setBackground(Color.decode("#2f2f2f"));
-        topPanel.setBackground(Color.decode("#2f2f2f"));
-        centerPanel.setBackground(Color.decode("#2f2f2f"));
-    
-        label.setForeground(Color.decode("#ffffff"));
-        btn.setForeground(Color.decode("#ffffff"));
-        btn2.setForeground(Color.decode("#ffffff"));
-        btn3.setForeground(Color.decode("#ffffff"));
-        info.setForeground(Color.decode("#ffffff"));
-    
-        btn.setBackground(Color.decode("#4f4f4f"));
-        btn2.setBackground(Color.decode("#4f4f4f"));
-        btn3.setBackground(Color.decode("#4f4f4f"));
-        info.setBackground(Color.decode("#4f4f4f"));
-    
-        btn.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
-        btn2.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
-        btn3.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
-        info.setBorder(BorderFactory.createLineBorder(Color.decode("#ffffff")));
-    }
-
-    public void lightTheme() {
-        getContentPane().setBackground(Color.decode("#f2f2f2"));
-        topPanel.setBackground(Color.decode("#f2f2f2"));
-        centerPanel.setBackground(Color.decode("#f2f2f2"));
-
-        label.setForeground(Color.decode("#333333"));
-        btn.setForeground(Color.decode("#333333"));
-        btn2.setForeground(Color.decode("#333333"));
-        btn3.setForeground(Color.decode("#333333"));
-        info.setForeground(Color.decode("#333333"));
-
-        btn.setBackground(Color.decode("#ffffff"));
-        btn2.setBackground(Color.decode("#ffffff"));
-        btn3.setBackground(Color.decode("#ffffff"));
-        info.setBackground(Color.decode("#ffffff"));
-
-        btn.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-        btn2.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-        btn3.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-        info.setBorder(BorderFactory.createLineBorder(Color.decode("#333333")));
-    }
+   
 }

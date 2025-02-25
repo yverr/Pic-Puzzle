@@ -367,6 +367,7 @@ public class PicPuzzle implements ActionListener{
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
             if(s1==pic && checkPuzzleSolved()){
+                currentLevel++;
                 picture.setIcon(pic2);
                 btn1.setIcon(icon10);
                 btn2.setIcon(icon11);
@@ -380,6 +381,7 @@ public class PicPuzzle implements ActionListener{
                 icon.setIcon(icon15);
                 star = icon.getIcon();
             } else if(s1==pic2 && checkPuzzleSolved()){
+                currentLevel++;
                 picture.setIcon(pic3);
                 btn1.setIcon(icon19);
                 btn2.setIcon(icon20);
@@ -393,6 +395,7 @@ public class PicPuzzle implements ActionListener{
                 icon.setIcon(icon20);
                 star = icon.getIcon(); 
             } else if(s1==pic3 && checkPuzzleSolved()){
+                currentLevel++;
                 picture.setIcon(pic4);
                 btn1.setIcon(icon28);
                 btn2.setIcon(icon29);
@@ -406,6 +409,7 @@ public class PicPuzzle implements ActionListener{
                 icon.setIcon(icon32);
                 star = icon.getIcon();
             } else if(s1==pic4 && checkPuzzleSolved()){
+                currentLevel++;
                 picture.setIcon(pic5);
                 btn1.setIcon(icon37);
                 btn2.setIcon(icon38);
@@ -620,7 +624,7 @@ public class PicPuzzle implements ActionListener{
         if (isSolved) {
             JOptionPane.showMessageDialog(frm, "You solved the puzzle! Next!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
             Levels gameDifficulty = new Levels(frm, this);
-            gameDifficulty.enableLevel(currentLevel + 1); //next level
+            gameDifficulty.enableLevel(currentLevel); //next level
             gameDifficulty.setVisible(true);
             return true;
         }  else {
