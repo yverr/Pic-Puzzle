@@ -5,8 +5,6 @@ import javax.swing.border.Border;
 
 public class Info extends JDialog{
 
-    //hell
-
     JLabel label, title;
     JPanel panel, topPanel, closePanel, mainPanel;
     JButton close;
@@ -14,7 +12,7 @@ public class Info extends JDialog{
     Info(JFrame parent) {
         super(parent, "info", true);
 
-        setUndecorated(true); //on everyones soul this dialog box looked like ass without this sht
+        setUndecorated(true); 
         setLayout(new BorderLayout());
         setSize(390, 420);
 
@@ -46,14 +44,14 @@ public class Info extends JDialog{
                                 <b>Contact us:</b>
                                 picpuzzlecontact@gmail.com
 
-                                Our project is <b>Open Source</b>! You can find the
+                                Our project is <b>Open Source</b>! You can find the 
                                 source code and contribute on our GitHub page 
                                 here:
                                 https://github.com/yverr/Pic-Puzzle
 
                                 Thank you for playing!
 
-                               """;
+                               """; //hindi pa open source LOL 
 
         label = new JLabel("<html>" + instructions.replaceAll("\n", "<br>") + "</html>");
         label.setFont(new Font("Arial", Font.PLAIN, 16));
