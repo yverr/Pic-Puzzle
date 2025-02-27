@@ -55,6 +55,7 @@ public class PauseMenu extends JDialog {
         panel.add(homeButton);
         panel.add(Box.createVerticalGlue());
 
+        panel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
         add(panel);
 
         setVisible(true);

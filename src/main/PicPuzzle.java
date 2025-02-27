@@ -1,10 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-//code too repetitive, needs refactoring(if possible)
 public class PicPuzzle implements ActionListener{
-
     //cry
     JFrame frm = new JFrame();
     JLabel lbl1, lbl2;
@@ -15,68 +12,39 @@ public class PicPuzzle implements ActionListener{
     private int secondsElapsed = 0;
     private final JLabel timerLabel;
     private final JButton pauseButton;
-    private JLabel statusLabel;
+    private final JLabel statusLabel;
     JLabel moveLabel;
+    private Levels gameDifficulty;
 
     Icon star;
     //puzzle set 1
-    Icon icon1 = new ImageIcon("./src/res/images/Game1/1.jpg");
-    Icon icon2 = new ImageIcon("./src/res/images/Game1/2.jpg");
-    Icon icon3 = new ImageIcon("./src/res/images/Game1/3.jpg");
-    Icon icon4 = new ImageIcon("./src/res/images/Game1/4.jpg");
-    Icon icon5 = new ImageIcon("./src/res/images/Game1/5.jpg");
-    Icon icon6 = new ImageIcon("./src/res/images/Game1/6.jpg");
-    Icon icon7 = new ImageIcon("./src/res/images/Game1/7.jpg");
-    Icon icon8 = new ImageIcon("./src/res/images/Game1/8.jpg");
-    Icon icon9 = new ImageIcon("./src/res/images/Game1/9.jpg");
+    Icon icon1 = new ImageIcon("./src/res/images/Game1/1.jpg"); Icon icon2 = new ImageIcon("./src/res/images/Game1/2.jpg"); Icon icon3 = new ImageIcon("./src/res/images/Game1/3.jpg");
+    Icon icon4 = new ImageIcon("./src/res/images/Game1/4.jpg"); Icon icon5 = new ImageIcon("./src/res/images/Game1/5.jpg"); Icon icon6 = new ImageIcon("./src/res/images/Game1/6.jpg");
+    Icon icon7 = new ImageIcon("./src/res/images/Game1/7.jpg"); Icon icon8 = new ImageIcon("./src/res/images/Game1/8.jpg"); Icon icon9 = new ImageIcon("./src/res/images/Game1/9.jpg");
     Icon pic = new ImageIcon("./src/res/images/Game1/flowercat.jpg");
 
     //puzzle set 2
-    Icon icon10 = new ImageIcon("./src/res/images/Game1/10.jpg");
-    Icon icon11 = new ImageIcon("./src/res/images/Game1/11.jpg");
-    Icon icon12 = new ImageIcon("./src/res/images/Game1/12.jpg");
-    Icon icon13 = new ImageIcon("./src/res/images/Game1/13.jpg");
-    Icon icon14 = new ImageIcon("./src/res/images/Game1/14.jpg");
-    Icon icon15 = new ImageIcon("./src/res/images/Game1/15.jpg");
-    Icon icon16 = new ImageIcon("./src/res/images/Game1/16.jpg");
-    Icon icon17 = new ImageIcon("./src/res/images/Game1/17.jpg");
-    Icon icon18 = new ImageIcon("./src/res/images/Game1/18.jpg");
+    Icon icon10 = new ImageIcon("./src/res/images/Game1/10.jpg"); Icon icon11 = new ImageIcon("./src/res/images/Game1/11.jpg"); Icon icon12 = new ImageIcon("./src/res/images/Game1/12.jpg");
+    Icon icon13 = new ImageIcon("./src/res/images/Game1/13.jpg"); Icon icon14 = new ImageIcon("./src/res/images/Game1/14.jpg"); Icon icon15 = new ImageIcon("./src/res/images/Game1/15.jpg");
+    Icon icon16 = new ImageIcon("./src/res/images/Game1/16.jpg"); Icon icon17 = new ImageIcon("./src/res/images/Game1/17.jpg"); Icon icon18 = new ImageIcon("./src/res/images/Game1/18.jpg");
     Icon pic2 = new ImageIcon("./src/res/images/Game1/killua.png");
 
     //puzzle set 3
-    Icon icon19 = new ImageIcon("./src/res/images/Game1/19.jpg");
-    Icon icon20 = new ImageIcon("./src/res/images/Game1/20.jpg");
-    Icon icon21 = new ImageIcon("./src/res/images/Game1/21.jpg");
-    Icon icon22 = new ImageIcon("./src/res/images/Game1/22.jpg");
-    Icon icon23 = new ImageIcon("./src/res/images/Game1/23.jpg");
-    Icon icon24 = new ImageIcon("./src/res/images/Game1/24.jpg");
-    Icon icon25 = new ImageIcon("./src/res/images/Game1/25.jpg");
-    Icon icon26 = new ImageIcon("./src/res/images/Game1/26.jpg");
-    Icon icon27 = new ImageIcon("./src/res/images/Game1/27.jpg");
+    Icon icon19 = new ImageIcon("./src/res/images/Game1/19.jpg"); Icon icon20 = new ImageIcon("./src/res/images/Game1/20.jpg"); Icon icon21 = new ImageIcon("./src/res/images/Game1/21.jpg");
+    Icon icon22 = new ImageIcon("./src/res/images/Game1/22.jpg"); Icon icon23 = new ImageIcon("./src/res/images/Game1/23.jpg"); Icon icon24 = new ImageIcon("./src/res/images/Game1/24.jpg");
+    Icon icon25 = new ImageIcon("./src/res/images/Game1/25.jpg"); Icon icon26 = new ImageIcon("./src/res/images/Game1/26.jpg"); Icon icon27 = new ImageIcon("./src/res/images/Game1/27.jpg");
     Icon pic3 = new ImageIcon("./src/res/images/Game1/yui.jpg");
 
     //puzzle set 4
-    Icon icon28 = new ImageIcon("./src/res/images/Game1/28.jpg");
-    Icon icon29 = new ImageIcon("./src/res/images/Game1/29.jpg");
-    Icon icon30 = new ImageIcon("./src/res/images/Game1/30.jpg");
-    Icon icon31 = new ImageIcon("./src/res/images/Game1/31.jpg");
-    Icon icon32 = new ImageIcon("./src/res/images/Game1/32.jpg");
-    Icon icon33 = new ImageIcon("./src/res/images/Game1/33.jpg");
-    Icon icon34 = new ImageIcon("./src/res/images/Game1/34.jpg");
-    Icon icon35 = new ImageIcon("./src/res/images/Game1/35.jpg");
-    Icon icon36 = new ImageIcon("./src/res/images/Game1/36.jpg");
+    Icon icon28 = new ImageIcon("./src/res/images/Game1/28.jpg"); Icon icon29 = new ImageIcon("./src/res/images/Game1/29.jpg"); Icon icon30 = new ImageIcon("./src/res/images/Game1/30.jpg");
+    Icon icon31 = new ImageIcon("./src/res/images/Game1/31.jpg"); Icon icon32 = new ImageIcon("./src/res/images/Game1/32.jpg"); Icon icon33 = new ImageIcon("./src/res/images/Game1/33.jpg");
+    Icon icon34 = new ImageIcon("./src/res/images/Game1/34.jpg"); Icon icon35 = new ImageIcon("./src/res/images/Game1/35.jpg"); Icon icon36 = new ImageIcon("./src/res/images/Game1/36.jpg"); 
     Icon pic4 = new ImageIcon("./src/res/images/Game1/pika.jpg");
 
     //puzzle set 5
-    Icon icon37 = new ImageIcon("./src/res/images/Game1/37.jpg");
-    Icon icon38 = new ImageIcon("./src/res/images/Game1/38.jpg");
-    Icon icon39 = new ImageIcon("./src/res/images/Game1/39.jpg");
-    Icon icon40 = new ImageIcon("./src/res/images/Game1/40.jpg");
-    Icon icon41 = new ImageIcon("./src/res/images/Game1/41.jpg");
-    Icon icon42 = new ImageIcon("./src/res/images/Game1/42.jpg");
-    Icon icon43 = new ImageIcon("./src/res/images/Game1/43.jpg");
-    Icon icon44 = new ImageIcon("./src/res/images/Game1/44.jpg");
-    Icon icon45 = new ImageIcon("./src/res/images/Game1/45.jpg");
+    Icon icon37 = new ImageIcon("./src/res/images/Game1/37.jpg"); Icon icon38 = new ImageIcon("./src/res/images/Game1/38.jpg"); Icon icon39 = new ImageIcon("./src/res/images/Game1/39.jpg");
+    Icon icon40 = new ImageIcon("./src/res/images/Game1/40.jpg"); Icon icon41 = new ImageIcon("./src/res/images/Game1/41.jpg"); Icon icon42 = new ImageIcon("./src/res/images/Game1/42.jpg");
+    Icon icon43 = new ImageIcon("./src/res/images/Game1/43.jpg"); Icon icon44 = new ImageIcon("./src/res/images/Game1/44.jpg"); Icon icon45 = new ImageIcon("./src/res/images/Game1/45.jpg");
     Icon pic5 = new ImageIcon("./src/res/images/Game1/cat.jpg");
 
     //Order of correct puzzle pieces
@@ -86,30 +54,27 @@ public class PicPuzzle implements ActionListener{
     Icon[] correctIconsPic4 = {icon30, icon28, icon31, icon36, icon29, icon34, icon35, icon32, icon33};
     Icon[] correctIconsPic5 = {icon37, icon40, icon44, icon41, icon39, icon45, icon38, icon43, icon42};
 
-    int currentLevel = 1;
+    int currentLevel = 2;
     private PauseMenu pauseMenu;
     
     public PicPuzzle(){
 
-        //assigning a random icon
+        gameDifficulty = new Levels(frm, this);
+
         star = icon8;
 
-        //top panel, center panel container: main panel
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(Color.RED);
 
-        //Label 1 & 2
         lbl1 = new JLabel("Click for change icon ->");
         lbl1.setFont(new Font("Comic Sans", Font.BOLD, 15));
         lbl2 = new JLabel("Click for change picture ↑");
         lbl2.setFont(new Font("Comic Sans", Font.BOLD, 15));
 
-        //Right Icon
         icon = new JButton(icon8);
         icon.setPreferredSize(new Dimension(90, 90));
 
-        //Wrap the text para hindi siya mag compress sa west
         var topWrapper = new JPanel(new GridBagLayout());
         topWrapper.add(lbl1);
 
@@ -119,7 +84,6 @@ public class PicPuzzle implements ActionListener{
         pauseButton.addActionListener(e -> showPauseMenu());
         pauseButton.setFocusable(false);
 
-        //lbl1 and icon container: top panel
         topPanel = new JPanel(new BorderLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(15,50,0,50));
         topPanel.add(topWrapper, BorderLayout.CENTER);
@@ -127,38 +91,21 @@ public class PicPuzzle implements ActionListener{
         topPanel.add(icon, BorderLayout.EAST);
 
         //buttons
-        btn1 = new JButton(icon1);
-        btn2 = new JButton(icon2);
-        btn3 = new JButton(icon3);
-        btn4 = new JButton(icon4);
-        btn5 = new JButton(icon5);
-        btn6 = new JButton(icon6);
-        btn7 = new JButton(icon7);
-        btn8 = new JButton(icon8);
-        btn9 = new JButton(icon9);
-        picture = new JButton(pic);
-
-        //buttons container: left panel
+        btn1 = new JButton(icon1); btn2 = new JButton(icon2); btn3 = new JButton(icon3); btn4 = new JButton(icon4); btn5 = new JButton(icon5);
+        btn6 = new JButton(icon6); btn7 = new JButton(icon7); btn8 = new JButton(icon8); btn9 = new JButton(icon9); picture = new JButton(pic);
+    
         leftPanel = new JPanel();
         leftPanel.setLayout(new GridLayout(3, 3, -2, -2));
         leftPanel.setPreferredSize(new Dimension(200, 200));
         leftPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));
 
-        //add to left panel
-        leftPanel.add(btn1);
-        leftPanel.add(btn2);
-        leftPanel.add(btn3);
-        leftPanel.add(btn4);
-        leftPanel.add(btn5);
-        leftPanel.add(btn6);
-        leftPanel.add(btn7);
-        leftPanel.add(btn8);
-        leftPanel.add(btn9);
+        leftPanel.add(btn1); leftPanel.add(btn2); leftPanel.add(btn3);
+        leftPanel.add(btn4); leftPanel.add(btn5); leftPanel.add(btn6);
+        leftPanel.add(btn7); leftPanel.add(btn8); leftPanel.add(btn9);
 
         //picture
         picture.setPreferredSize(new Dimension(pic.getIconWidth(), pic.getIconHeight()));
 
-        //picture container: right panel
         rightPanel = new JPanel();
         rightPanel.setLayout(new BorderLayout());
         rightPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));
@@ -170,37 +117,24 @@ public class PicPuzzle implements ActionListener{
 
         moveLabel = new JLabel("Moves: 0");
         timerLabel = new JLabel("Time: 00:00");
-
         timer = new Timer(1000, e -> updateTimer()); 
 
         statusLabel = new JLabel("Time: 00:00   Moves: 0 ");
         statusLabel.setFont(new Font("Comic Sans", Font.BOLD, 15));
 
-
-        //lbl2 container: bottom right panel
         bottomPanel = new JPanel();
-        bottomPanel = new JPanel(new BorderLayout());
+        bottomPanel.setLayout(new BorderLayout());
         rightWrapper.add(lbl2);
-        bottomPanel.add(statusLabel, BorderLayout.WEST);
-        bottomPanel.add(rightWrapper, BorderLayout.EAST);
+        bottomPanel.add(statusLabel, BorderLayout.WEST); bottomPanel.add(rightWrapper, BorderLayout.EAST);
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(0,50,30,50));
 
-        //left panel, right panel, bottom panel container: center panel
         centerPanel = new JPanel();
         centerPanel.setLayout(new GridLayout(1, 2));
-        centerPanel.add(leftPanel);
-        centerPanel.add(rightPanel);
-        centerPanel.add(bottomPanel);
-
-        //add to main panel
-        mainPanel.add(topPanel, BorderLayout.NORTH);
-        mainPanel.add(centerPanel, BorderLayout.CENTER);
-        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-
-        //add to frame
+        centerPanel.add(leftPanel); centerPanel.add(rightPanel); centerPanel.add(bottomPanel);
+        
+        mainPanel.add(topPanel, BorderLayout.NORTH); mainPanel.add(centerPanel, BorderLayout.CENTER); mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        
         frm.add(mainPanel);
-
-        //frame properties
         frm.setTitle("PicPuzzle");
         frm.setResizable(false);
         frm.setLocation(250, 75);
@@ -222,33 +156,16 @@ public class PicPuzzle implements ActionListener{
             }
         });
 
-        //action listener
-        icon.addActionListener(this);
-        btn1.addActionListener(this); btn2.addActionListener(this);
-        btn3.addActionListener(this); btn4.addActionListener(this);
-        btn5.addActionListener(this); btn6.addActionListener(this);
-        btn7.addActionListener(this); btn8.addActionListener(this);
-        btn9.addActionListener(this); picture.addActionListener(this);
+        btn1.addActionListener(this); btn2.addActionListener(this); btn3.addActionListener(this); btn4.addActionListener(this);
+        btn5.addActionListener(this); btn6.addActionListener(this); btn7.addActionListener(this); btn8.addActionListener(this);
+        btn9.addActionListener(this); icon.addActionListener(this); picture.addActionListener(this);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (!timer.isRunning()) {
-            startTheTimer(); 
-        }
+        if (!timer.isRunning()) startTheTimer(); 
 
-        /* 
-        * NOTE: A button can only switch to its neighbouring buttons/the buttons besides it. 
-        * 
-        *  star            This is a placeholder to change icons. Any icon that's in star icon can move in the puzzle.
-        *                  The icon held in star icon can be changed through the icon button on the top right.
-        *  s1              This is fetching the icon of the clicked button, then passes it to the button that it was
-        *                  previously in.                
-        *  moveCount()     This is a method that can be seen below the entire code. Every time an action happens, 
-        *                  this method increments.
-        *
-        */ 
         //switch button 1 to button 2 and 4
         if(e.getSource() == btn1){
             Icon s1 = btn1.getIcon();
@@ -384,74 +301,33 @@ public class PicPuzzle implements ActionListener{
             moveCount();
         }
 
-        /*
-            * changes the set of puzzle pieces to the next set of pieces.
-            * 
-            * if(s1==pic && checkPuzzleSolved())     checks that if the current picture is the first set
-            *                                        and if the puzzle is in the right order(is solved).
-            *                                        If the puzzle is the first set, it changes to the second.
-            * checkPuzzleSolved()                    Is a method that can be seen below. It uses arrays to compare the 
-            *                                        the current order of icons to the correct order of icons. It 
-            *                                        gives a prompt of its results then returns true if the puzzle is solved.         
-            */
+        // changes the set of puzzle pieces to the next set of pieces.
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
             if(s1==pic && checkPuzzleSolved()){
                 currentLevel++;
-                picture.setIcon(pic2);
-                btn1.setIcon(icon10);
-                btn2.setIcon(icon11);
-                btn3.setIcon(icon12);
-                btn4.setIcon(icon13);
-                btn5.setIcon(icon14);
-                btn6.setIcon(icon15);
-                btn7.setIcon(icon16);
-                btn8.setIcon(icon17);
-                btn9.setIcon(icon18);
-                icon.setIcon(icon15);
-                star = icon.getIcon();
+                picture.setIcon(pic2); icon.setIcon(icon15); star = icon.getIcon();
+                btn1.setIcon(icon10); btn2.setIcon(icon11); btn3.setIcon(icon12);
+                btn4.setIcon(icon13); btn5.setIcon(icon14); btn6.setIcon(icon15);
+                btn7.setIcon(icon16); btn8.setIcon(icon17); btn9.setIcon(icon18);   
             } else if(s1==pic2 && checkPuzzleSolved()){
                 currentLevel++;
-                picture.setIcon(pic3);
-                btn1.setIcon(icon19);
-                btn2.setIcon(icon20);
-                btn3.setIcon(icon21);
-                btn4.setIcon(icon22);
-                btn5.setIcon(icon23);
-                btn6.setIcon(icon24);
-                btn7.setIcon(icon25);
-                btn8.setIcon(icon26);
-                btn9.setIcon(icon27);
-                icon.setIcon(icon20);
-                star = icon.getIcon(); 
+                picture.setIcon(pic3); icon.setIcon(icon20); star = icon.getIcon(); 
+                btn1.setIcon(icon19); btn2.setIcon(icon20); btn3.setIcon(icon21);
+                btn4.setIcon(icon22); btn5.setIcon(icon23); btn6.setIcon(icon24);
+                btn7.setIcon(icon25); btn8.setIcon(icon26); btn9.setIcon(icon27); 
             } else if(s1==pic3 && checkPuzzleSolved()){
                 currentLevel++;
-                picture.setIcon(pic4);
-                btn1.setIcon(icon28);
-                btn2.setIcon(icon29);
-                btn3.setIcon(icon30);
-                btn4.setIcon(icon31);
-                btn5.setIcon(icon32);
-                btn6.setIcon(icon33);
-                btn7.setIcon(icon34);
-                btn8.setIcon(icon35);
-                btn9.setIcon(icon36);
-                icon.setIcon(icon32);
-                star = icon.getIcon();
+                picture.setIcon(pic4); icon.setIcon(icon32); star = icon.getIcon();
+                btn1.setIcon(icon28); btn2.setIcon(icon29); btn3.setIcon(icon30);
+                btn4.setIcon(icon31); btn5.setIcon(icon32); btn6.setIcon(icon33);
+                btn7.setIcon(icon34); btn8.setIcon(icon35); btn9.setIcon(icon36); 
             } else if(s1==pic4 && checkPuzzleSolved()){
                 currentLevel++;
-                picture.setIcon(pic5);
-                btn1.setIcon(icon37);
-                btn2.setIcon(icon38);
-                btn3.setIcon(icon39);
-                btn4.setIcon(icon40);
-                btn5.setIcon(icon41);
-                btn6.setIcon(icon42);
-                btn7.setIcon(icon43);
-                btn8.setIcon(icon44);
-                btn9.setIcon(icon45);
-                icon.setIcon(icon44);
-                star = icon.getIcon();
+                picture.setIcon(pic5); icon.setIcon(icon44); star = icon.getIcon();
+                btn1.setIcon(icon37); btn2.setIcon(icon38); btn3.setIcon(icon39);
+                btn4.setIcon(icon40); btn5.setIcon(icon41); btn6.setIcon(icon42);
+                btn7.setIcon(icon43); btn8.setIcon(icon44); btn9.setIcon(icon45);
             } else if(s1==pic5){
                 stopTimer();
                 int minutes = secondsElapsed / 60;
@@ -464,22 +340,7 @@ public class PicPuzzle implements ActionListener{
             }
         }
 
-        /* 
-        * the icon on the top right switches from the first icon to the last icon with every click (basically, it's just looping)
-        *
-        * if(picture.getIcon()==pic)   Based on the icon in the picture button, it determines which set of puzzle you are in.
-        *                              If the current icon in the picture button is the first pic, then you are on the first set of puzzle.
-        *                              Once its determined that youre on the first set, the icon button will loop through ONLY the icons of 
-        *                              the first set of the puzzle.
-        *
-        * basically: 
-        * if the current icon in the picture button is pic 1:
-        * icon1 -> icon2 -> icon3 -> icon4 -> icon5 -> icon6 -> icon7 -> icon8 -> icon9 -> icon1 -> repeat
-        * if the current icon in the picture button is pic 2:
-        * icon10 -> icon11 -> icon12 -> icon13 -> icon14 -> icon15 -> icon16 -> icon17 -> icon18 -> icon10 -> repeat
-        * goes the same for the rest of the pic3-pic5 and the icons
-        */
-        if(e.getSource()== icon ){
+        if(e.getSource()== icon){
             if(picture.getIcon()==pic){
                 Icon s2 = icon.getIcon();
                 if(s2==icon9){
@@ -633,8 +494,7 @@ public class PicPuzzle implements ActionListener{
             }
         }
     }
-    
-        //when this method is called, it returns a boolean (true or false)
+    //when this method is called, it returns a boolean (true or false)
     private boolean checkPuzzleSolved() {
         Icon[] currentIcons = {
             btn1.getIcon(), btn2.getIcon(), btn3.getIcon(),
@@ -651,8 +511,6 @@ public class PicPuzzle implements ActionListener{
         else if(currentPic == pic5) correctIcon = correctIconsPic5;
     
         boolean isSolved = true;
-        // now that you have gotten the correct order of items for the current puzzle,
-        // u compare the current order of icons to the the correct order of icons
         for (int i = 0; i < currentIcons.length; i++) {
             if (currentIcons[i] != correctIcon[i]) {
                 isSolved = false;
@@ -660,11 +518,9 @@ public class PicPuzzle implements ActionListener{
             }
         }
     
-        //self explainatory
         if (isSolved) {
             JOptionPane.showMessageDialog(frm, "You solved the puzzle! Next!", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-            Levels gameDifficulty = new Levels(frm, this);
-            gameDifficulty.enableLevel(currentLevel);  //On level class
+            gameDifficulty.enableLevel(currentLevel);  // Reuse the existing Levels instance
             gameDifficulty.setVisible(true);
             return true;
         }  else {
@@ -684,14 +540,11 @@ public class PicPuzzle implements ActionListener{
         secondsElapsed = 0;
         timerLabel.setText("Time: 0s");
     
-        if (timer != null) { 
-            timer.stop();
-        }
+        if (timer != null) timer.stop();
         
         timer = new Timer(1000, e -> updateTimer());  // Initialize timer
         timer.start();
     }
-    
 
     private void updateTimer() {
         secondsElapsed++;
@@ -709,29 +562,18 @@ public class PicPuzzle implements ActionListener{
     }
 
     private void enableButtons(boolean enable) {
-        btn1.setEnabled(enable);
-        btn2.setEnabled(enable);
-        btn3.setEnabled(enable);
-        btn4.setEnabled(enable);
-        btn5.setEnabled(enable);
-        btn6.setEnabled(enable);
-        btn7.setEnabled(enable);
-        btn8.setEnabled(enable);
-        btn9.setEnabled(enable);
-        icon.setEnabled(enable);
-        picture.setEnabled(enable);
-
+        btn1.setEnabled(enable); btn2.setEnabled(enable); btn3.setEnabled(enable);
+        btn4.setEnabled(enable); btn5.setEnabled(enable); btn6.setEnabled(enable);
+        btn7.setEnabled(enable); btn8.setEnabled(enable); btn9.setEnabled(enable);
+        icon.setEnabled(enable); picture.setEnabled(enable); pauseButton.setEnabled(enable);
     }
         
     public void setPauseMenu(PauseMenu pauseMenu) {
         this.pauseMenu = pauseMenu;
     }
 
-
     private void showPauseMenu() {
-        if (timer.isRunning()) {
-            stopTimer();
-        }
+        if (timer.isRunning()) stopTimer();
         enableButtons(false);
 
         pauseMenu = new PauseMenu(frm, this);
@@ -745,14 +587,8 @@ public class PicPuzzle implements ActionListener{
     }
 
     public void resumeGame() {
-        if (pauseMenu != null) {
-            pauseMenu.dispose();
-        }
-        
-        if (!timer.isRunning()) {
-            timer.start();
-        }
-
+        if (pauseMenu != null) pauseMenu.dispose();
+        if (!timer.isRunning()) timer.start();
         enableButtons(true);
     }
     
@@ -760,20 +596,11 @@ public class PicPuzzle implements ActionListener{
         secondsElapsed = 0;
         moveCount = 0;
         statusLabel.setText("Time: 00:00   Moves: 0");
-    
-        btn1.setIcon(icon1);
-        btn2.setIcon(icon2);
-        btn3.setIcon(icon3);
-        btn4.setIcon(icon4);
-        btn5.setIcon(icon5);
-        btn6.setIcon(icon6);
-        btn7.setIcon(icon7);
-        btn8.setIcon(icon8);
-        btn9.setIcon(icon9);
-        icon.setIcon(icon8);
-        star = icon.getIcon();
-        picture.setIcon(pic);
-    
+        btn1.setIcon(icon1); btn2.setIcon(icon2); btn3.setIcon(icon3);
+        btn4.setIcon(icon4); btn5.setIcon(icon5); btn6.setIcon(icon6);
+        btn7.setIcon(icon7); btn8.setIcon(icon8); btn9.setIcon(icon9);
+        icon.setIcon(icon8); picture.setIcon(pic); star = icon.getIcon();   
+
         timer.start();
         enableButtons(true);
     }
@@ -781,5 +608,4 @@ public class PicPuzzle implements ActionListener{
     public void stopTimer() {
         timer.stop(); //had to make a method because i need to access this in another class
     }
-    
 }

@@ -94,12 +94,13 @@ public class Levels extends JDialog implements ActionListener{
     }
 
     public void enableLevel(int level) {
+        System.out.println("Enabling level " + level);
         btn1.setEnabled(false); 
         switch (level) {
-            case 2 -> btn2.setEnabled(true);
-            case 3 -> btn3.setEnabled(true);
-            case 4 -> btn4.setEnabled(true);
-            case 5 -> btn5.setEnabled(true);
+            case 2 -> {btn2.setEnabled(true); btn1.setEnabled(false); }
+            case 3 -> {btn3.setEnabled(true); btn2.setEnabled(false);}
+            case 4 -> {btn4.setEnabled(true); btn3.setEnabled(false);}
+            case 5 -> {btn5.setEnabled(true); btn4.setEnabled(false);}
             default -> {
             }
         }

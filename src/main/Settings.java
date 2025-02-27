@@ -4,10 +4,17 @@ import java.awt.event.*;
 
 public class Settings extends JDialog implements ActionListener{
 
-    private JButton close, volume, theme;
-    private JPanel panel, closePanel, topPanel, mainPanel;
-    private JLabel title, volumeLabel, themeLabel;
-    private GameMenu g;
+    private final JButton close;
+    private final JButton volume;
+    private final JButton theme;
+    private final JPanel panel;
+    private final JPanel closePanel;
+    private final JPanel topPanel;
+    private final JPanel mainPanel;
+    private final JLabel title;
+    private final JLabel volumeLabel;
+    private final JLabel themeLabel;
+    private final GameMenu g;
 
     Settings(JFrame parent, GameMenu gameMenu) {
         super(parent, "Settings", true);
@@ -47,7 +54,6 @@ public class Settings extends JDialog implements ActionListener{
         panel.add(volume);
         panel.add(themeLabel);
         panel.add(theme);
-        
 
         close = new JButton("Close");
         close.setPreferredSize(new Dimension(80, 30));
