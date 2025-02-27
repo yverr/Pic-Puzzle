@@ -770,6 +770,9 @@ public class PicPuzzle implements ActionListener{
         btn7.setIcon(icon7);
         btn8.setIcon(icon8);
         btn9.setIcon(icon9);
+        icon.setIcon(icon8);
+        star = icon.getIcon();
+        picture.setIcon(pic);
     
         timer.start();
         enableButtons(true);
