@@ -4,11 +4,17 @@ import javax.swing.*;
 
 //code too repetitive, needs refactoring(if possible)
 public class PicPuzzle implements ActionListener{
+
     JFrame frm = new JFrame();
     JLabel lbl1, lbl2;
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
     JButton icon, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, picture;
     int moveCount = 0;
+    private Timer timer;
+    private int secondsElapsed = 0;
+    private final JLabel timerLabel;
+    private final JButton pauseButton;
+    private JLabel statusLabel;
     JLabel moveLabel;
 
     Icon star;
@@ -80,8 +86,10 @@ public class PicPuzzle implements ActionListener{
     Icon[] correctIconsPic5 = {icon37, icon40, icon44, icon41, icon39, icon45, icon38, icon43, icon42};
 
     int currentLevel = 1;
-
+    private PauseMenu pauseMenu;
+    
     public PicPuzzle(){
+
         //assigning a random icon
         star = icon8;
 
@@ -104,14 +112,17 @@ public class PicPuzzle implements ActionListener{
         var topWrapper = new JPanel(new GridBagLayout());
         topWrapper.add(lbl1);
 
-        moveLabel = new JLabel("Moves: 0");
-        moveLabel.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        pauseButton = new JButton("❚❚");
+        pauseButton.setFont(new Font("Comic Sans", Font.BOLD, 35));
+        pauseButton.setPreferredSize(new Dimension(90, 90));
+        pauseButton.addActionListener(e -> showPauseMenu());
+        pauseButton.setFocusable(false);
 
         //lbl1 and icon container: top panel
         topPanel = new JPanel(new BorderLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(15,50,0,50));
         topPanel.add(topWrapper, BorderLayout.CENTER);
-        topPanel.add(moveLabel, BorderLayout.WEST);
+        topPanel.add(pauseButton, BorderLayout.WEST);
         topPanel.add(icon, BorderLayout.EAST);
 
         //buttons
@@ -152,15 +163,26 @@ public class PicPuzzle implements ActionListener{
         rightPanel.setBorder(BorderFactory.createEmptyBorder(35,50,45,50));
         rightPanel.add(picture, BorderLayout.CENTER);
 
-        //wrapping the text para hindi siya mag compress sa taas(idk ayaw niya mapunta sa taas pag wala wrapper and gridbaglayout)
-        var leftWrapper = new JPanel(new GridBagLayout());
+        //wrapping the text para hindi siya mag compress sa baba(idk ayaw niya mapunta sa taas pag wala wrapper and gridbaglayout)
+        // var leftWrapper = new JPanel(new GridBagLayout());
+        JPanel rightWrapper = new JPanel(new GridBagLayout());
+
+        moveLabel = new JLabel("Moves: 0");
+        timerLabel = new JLabel("Time: 00:00");
+
+        timer = new Timer(1000, e -> updateTimer()); 
+
+        statusLabel = new JLabel("Time: 00:00   Moves: 0 ");
+        statusLabel.setFont(new Font("Comic Sans", Font.BOLD, 15));
+
 
         //lbl2 container: bottom right panel
         bottomPanel = new JPanel();
         bottomPanel = new JPanel(new BorderLayout());
-        leftWrapper.add(lbl2);
-        bottomPanel.add(leftWrapper, BorderLayout.EAST);
-        bottomPanel.setBorder(BorderFactory.createEmptyBorder(0,0,30,50));
+        rightWrapper.add(lbl2);
+        bottomPanel.add(statusLabel, BorderLayout.WEST);
+        bottomPanel.add(rightWrapper, BorderLayout.EAST);
+        bottomPanel.setBorder(BorderFactory.createEmptyBorder(0,50,30,50));
 
         //left panel, right panel, bottom panel container: center panel
         centerPanel = new JPanel();
@@ -191,6 +213,7 @@ public class PicPuzzle implements ActionListener{
                 int result = JOptionPane.showConfirmDialog(frm, "Are you sure you want to go back? You will lose all your progress.", 
                 "Confirm Exit", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.YES_OPTION) {
+                    timer.stop(); 
                     frm.dispose();
                     GameMenu gameMenu = new GameMenu();
                     gameMenu.setVisible(true);
@@ -206,9 +229,14 @@ public class PicPuzzle implements ActionListener{
         btn7.addActionListener(this); btn8.addActionListener(this);
         btn9.addActionListener(this); picture.addActionListener(this);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if (!timer.isRunning()) {
+            startTheTimer(); 
+        }
+
         /* 
         * NOTE: A button can only switch to its neighbouring buttons/the buttons besides it. 
         * 
@@ -356,15 +384,15 @@ public class PicPuzzle implements ActionListener{
         }
 
         /*
-         * changes the set of puzzle pieces to the next set of pieces.
-         * 
-         * if(s1==pic && checkPuzzleSolved())     checks that if the current picture is the first set
-         *                                        and if the puzzle is in the right order(is solved).
-         *                                        If the puzzle is the first set, it changes to the second.
-         * checkPuzzleSolved()                    Is a method that can be seen below. It uses arrays to compare the 
-         *                                        the current order of icons to the correct order of icons. It 
-         *                                        gives a prompt of its results then returns true if the puzzle is solved.         
-         */
+            * changes the set of puzzle pieces to the next set of pieces.
+            * 
+            * if(s1==pic && checkPuzzleSolved())     checks that if the current picture is the first set
+            *                                        and if the puzzle is in the right order(is solved).
+            *                                        If the puzzle is the first set, it changes to the second.
+            * checkPuzzleSolved()                    Is a method that can be seen below. It uses arrays to compare the 
+            *                                        the current order of icons to the correct order of icons. It 
+            *                                        gives a prompt of its results then returns true if the puzzle is solved.         
+            */
         if(e.getSource()==picture){
             Icon s1 = picture.getIcon();   
             if(s1==pic && checkPuzzleSolved()){
@@ -424,7 +452,10 @@ public class PicPuzzle implements ActionListener{
                 icon.setIcon(icon44);
                 star = icon.getIcon();
             } else if(s1==pic5){
-                JOptionPane.showMessageDialog(frm, "You solved all the puzzles!\nYou've made "+ moveCount + " moves in total!", 
+                stopTimer();
+                int minutes = secondsElapsed / 60;
+                int seconds = secondsElapsed % 60;
+                JOptionPane.showMessageDialog(frm, "You solved all the puzzles!\nFinal Time: " + String.format("%02d:%02d", minutes, seconds) + "\nFinal Moves: " + moveCount, 
                 "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
                 frm.dispose();
                 GameMenu gameMenu = new GameMenu();
@@ -601,8 +632,8 @@ public class PicPuzzle implements ActionListener{
             }
         }
     }
-
-    //when this method is called, it returns a boolean (true or false)
+    
+        //when this method is called, it returns a boolean (true or false)
     private boolean checkPuzzleSolved() {
         Icon[] currentIcons = {
             btn1.getIcon(), btn2.getIcon(), btn3.getIcon(),
@@ -643,6 +674,108 @@ public class PicPuzzle implements ActionListener{
 
     private void moveCount() {
         moveCount++;
-        moveLabel.setText("Moves: " + moveCount);
+        int minutes = secondsElapsed / 60;
+        int seconds = secondsElapsed % 60;
+        statusLabel.setText(String.format("Time: %02d:%02d   Moves: %d", minutes, seconds, moveCount));
+    }    
+
+    public final void startTheTimer() {
+        secondsElapsed = 0;
+        timerLabel.setText("Time: 0s");
+    
+        if (timer != null) { 
+            timer.stop();
+        }
+        
+        timer = new Timer(1000, e -> updateTimer());  // Initialize timer
+        timer.start();
     }
+    
+
+    private void updateTimer() {
+        secondsElapsed++;
+        int minutes = secondsElapsed / 60;
+        int seconds = secondsElapsed % 60;
+        statusLabel.setText(String.format("Time: %02d:%02d   Moves: %d", minutes, seconds, moveCount));
+
+        if (secondsElapsed >= 300) {  
+            stopTimer();
+            JOptionPane.showMessageDialog(frm, "Time's up! You ran out of time!", "Game Over", JOptionPane.WARNING_MESSAGE);
+            frm.dispose();
+            GameMenu gameMenu = new GameMenu();
+            gameMenu.setVisible(true);
+        }
+    }
+
+    private void enableButtons(boolean enable) {
+        btn1.setEnabled(enable);
+        btn2.setEnabled(enable);
+        btn3.setEnabled(enable);
+        btn4.setEnabled(enable);
+        btn5.setEnabled(enable);
+        btn6.setEnabled(enable);
+        btn7.setEnabled(enable);
+        btn8.setEnabled(enable);
+        btn9.setEnabled(enable);
+        icon.setEnabled(enable);
+        picture.setEnabled(enable);
+
+    }
+        
+    public void setPauseMenu(PauseMenu pauseMenu) {
+        this.pauseMenu = pauseMenu;
+    }
+
+
+    private void showPauseMenu() {
+        if (timer.isRunning()) {
+            stopTimer();
+        }
+        enableButtons(false);
+
+        pauseMenu = new PauseMenu(frm, this);
+        pauseMenu.setVisible(false);
+        pauseMenu.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                resumeGame();
+            }
+        });
+    }
+
+    public void resumeGame() {
+        if (pauseMenu != null) {
+            pauseMenu.dispose();
+        }
+        
+        if (!timer.isRunning()) {
+            timer.start();
+        }
+
+        enableButtons(true);
+    }
+    
+    public void restartGame() {
+        secondsElapsed = 0;
+        moveCount = 0;
+        statusLabel.setText("Time: 00:00   Moves: 0");
+    
+        btn1.setIcon(icon1);
+        btn2.setIcon(icon2);
+        btn3.setIcon(icon3);
+        btn4.setIcon(icon4);
+        btn5.setIcon(icon5);
+        btn6.setIcon(icon6);
+        btn7.setIcon(icon7);
+        btn8.setIcon(icon8);
+        btn9.setIcon(icon9);
+    
+        timer.start();
+        enableButtons(true);
+    }
+
+    public void stopTimer() {
+        timer.stop(); //had to make a method because i need to access this in another class
+    }
+    
 }

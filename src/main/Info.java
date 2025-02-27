@@ -44,11 +44,6 @@ public class Info extends JDialog{
                                 <b>Contact us:</b>
                                 picpuzzlecontact@gmail.com
 
-                                Our project is <b>Open Source</b>! You can find the 
-                                source code and contribute on our GitHub page 
-                                here:
-                                https://github.com/yverr/Pic-Puzzle
-
                                 Thank you for playing!
 
                                """; //hindi pa open source LOL 
