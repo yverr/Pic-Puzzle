@@ -5,6 +5,7 @@ import javax.swing.*;
 //code too repetitive, needs refactoring(if possible)
 public class PicPuzzle implements ActionListener{
 
+    //cry
     JFrame frm = new JFrame();
     JLabel lbl1, lbl2;
     JPanel mainPanel, topPanel, centerPanel, leftPanel, rightPanel, bottomPanel;
