@@ -80,10 +80,18 @@ public class Settings extends JDialog implements ActionListener{
     }
 
 
-    //deleting theme feature, volume has no function yet.
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(e.getSource() == volume) {
+            BackgroundMusic bgm = new BackgroundMusic();
+            if(volume.getText().equals("OFF")) {
+                bgm.stopMusic();
+                volume.setText("ON");
+            } else if(volume.getText().equals("ON")){
+                bgm.startMusic();
+                volume.setText("OFF");
+            }
+        }
     }
   
 }
