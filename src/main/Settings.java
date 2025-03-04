@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -18,9 +21,9 @@ public class Settings extends JDialog implements ActionListener{
     private final GameMenu g;
     Clip c;
     
-        Settings(JFrame parent, GameMenu gameMenu) {
-            super(parent, "Settings", true);
-            this.g = gameMenu;
+    Settings(JFrame parent, GameMenu gameMenu) {
+        super(parent, "Settings", true);
+        this.g = gameMenu;
 
         setUndecorated(true);
         setSize(290, 320);
@@ -35,8 +38,15 @@ public class Settings extends JDialog implements ActionListener{
         title.setAlignmentX(JPanel.CENTER_ALIGNMENT);
         topPanel.add(title, BorderLayout.CENTER);
 
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 25);  
+        slider.setBounds(150, 60, 120, 50);
+        slider.setMinorTickSpacing(2);  
+        slider.setMajorTickSpacing(25);  
+        slider.setPaintTicks(true);  
+        slider.setPaintLabels(true);  
+
         volumeLabel = new JLabel("Volume: ");
-        volumeLabel.setBounds(50, 50, 150, 30);
+        volumeLabel.setBounds(50, 50, 150, 50);
 
         volume = new JButton("OFF");
         volume.setBounds(150, 50, 100, 30);
@@ -44,17 +54,18 @@ public class Settings extends JDialog implements ActionListener{
         volume.addActionListener(this);
 
         themeLabel = new JLabel("Theme: ");
-        themeLabel.setBounds(50, 100, 150, 30);
+        themeLabel.setBounds(50, 110, 150, 30);
 
         theme = new JButton("Dark");
-        theme.setBounds(150, 100, 100, 30);
+        theme.setBounds(160, 110, 100, 30);
+        theme.setPreferredSize(new Dimension(100, 30));
         theme.setFocusable(false);
         theme.addActionListener(this);
         
         panel = new JPanel();
         panel.setLayout(null);
         panel.add(volumeLabel);
-        panel.add(volume);
+        panel.add(slider);
         panel.add(themeLabel);
         panel.add(theme);
 
