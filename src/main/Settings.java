@@ -1,6 +1,7 @@
+import java.io.IOException;
+import javax.sound.sampled.*;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
 
 public class Settings extends JDialog implements ActionListener{
 
@@ -15,10 +16,12 @@ public class Settings extends JDialog implements ActionListener{
     private final JLabel volumeLabel;
     private final JLabel themeLabel;
     private final GameMenu g;
+    Clip c;
+    
+        Settings(JFrame parent, GameMenu gameMenu) {
+            super(parent, "Settings", true);
+            this.g = gameMenu;
 
-    Settings(JFrame parent, GameMenu gameMenu) {
-        super(parent, "Settings", true);
-        this.g = gameMenu;
         setUndecorated(true);
         setSize(290, 320);
 
@@ -79,11 +82,35 @@ public class Settings extends JDialog implements ActionListener{
         this.setVisible(true);
     }
 
-
-    //deleting theme feature, volume has no function yet.
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(e.getSource() == volume) {
+            if(volume.getText().equals("OFF")) {
+                volume.setText("ON");
+            } else if(volume.getText().equals("ON")){
+                volume.setText("OFF");
+            }
+        }
+    }
+
+    void bgMusic() {
+        try{
+            c = AudioSystem.getClip();
+            c.open(AudioSystem.getAudioInputStream(new File("Pic-Puzzle-main\\src\\res\\sounds\\Mingle.wav")));
+            c.loop(Clip.LOOP_CONTINUOUSLY);
+            c.start();
+        } catch(LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    void startMusic() {
+        c.start();
+    }
+
+    void stopMusic() {
+        c.stop();
     }
   
 }
