@@ -18,34 +18,34 @@ public class PicPuzzle implements ActionListener{
 
     Icon star;
     //puzzle set 1
-    Icon icon1 = new ImageIcon("./src/res/images/Game1/1.jpg"); Icon icon2 = new ImageIcon("./src/res/images/Game1/2.jpg"); Icon icon3 = new ImageIcon("./src/res/images/Game1/3.jpg");
-    Icon icon4 = new ImageIcon("./src/res/images/Game1/4.jpg"); Icon icon5 = new ImageIcon("./src/res/images/Game1/5.jpg"); Icon icon6 = new ImageIcon("./src/res/images/Game1/6.jpg");
-    Icon icon7 = new ImageIcon("./src/res/images/Game1/7.jpg"); Icon icon8 = new ImageIcon("./src/res/images/Game1/8.jpg"); Icon icon9 = new ImageIcon("./src/res/images/Game1/9.jpg");
-    Icon pic = new ImageIcon("./src/res/images/Game1/flowercat.jpg");
+    Icon icon1 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\1.jpg"); Icon icon2 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\2.jpg"); Icon icon3 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\3.jpg");
+    Icon icon4 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\4.jpg"); Icon icon5 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\5.jpg"); Icon icon6 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\6.jpg");
+    Icon icon7 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\7.jpg"); Icon icon8 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\8.jpg"); Icon icon9 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\9.jpg");
+    Icon pic = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\flowercat.jpg");
 
     //puzzle set 2
-    Icon icon10 = new ImageIcon("./src/res/images/Game1/10.jpg"); Icon icon11 = new ImageIcon("./src/res/images/Game1/11.jpg"); Icon icon12 = new ImageIcon("./src/res/images/Game1/12.jpg");
-    Icon icon13 = new ImageIcon("./src/res/images/Game1/13.jpg"); Icon icon14 = new ImageIcon("./src/res/images/Game1/14.jpg"); Icon icon15 = new ImageIcon("./src/res/images/Game1/15.jpg");
-    Icon icon16 = new ImageIcon("./src/res/images/Game1/16.jpg"); Icon icon17 = new ImageIcon("./src/res/images/Game1/17.jpg"); Icon icon18 = new ImageIcon("./src/res/images/Game1/18.jpg");
-    Icon pic2 = new ImageIcon("./src/res/images/Game1/killua.png");
+    Icon icon10 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\10.jpg"); Icon icon11 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\11.jpg"); Icon icon12 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\12.jpg");
+    Icon icon13 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\13.jpg"); Icon icon14 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\14.jpg"); Icon icon15 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\15.jpg");
+    Icon icon16 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\16.jpg"); Icon icon17 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\17.jpg"); Icon icon18 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\18.jpg");
+    Icon pic2 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\killua.png");
 
     //puzzle set 3
-    Icon icon19 = new ImageIcon("./src/res/images/Game1/19.jpg"); Icon icon20 = new ImageIcon("./src/res/images/Game1/20.jpg"); Icon icon21 = new ImageIcon("./src/res/images/Game1/21.jpg");
-    Icon icon22 = new ImageIcon("./src/res/images/Game1/22.jpg"); Icon icon23 = new ImageIcon("./src/res/images/Game1/23.jpg"); Icon icon24 = new ImageIcon("./src/res/images/Game1/24.jpg");
-    Icon icon25 = new ImageIcon("./src/res/images/Game1/25.jpg"); Icon icon26 = new ImageIcon("./src/res/images/Game1/26.jpg"); Icon icon27 = new ImageIcon("./src/res/images/Game1/27.jpg");
-    Icon pic3 = new ImageIcon("./src/res/images/Game1/yui.jpg");
+    Icon icon19 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\19.jpg"); Icon icon20 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\20.jpg"); Icon icon21 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\21.jpg");
+    Icon icon22 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\22.jpg"); Icon icon23 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\23.jpg"); Icon icon24 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\24.jpg");
+    Icon icon25 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\25.jpg"); Icon icon26 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\26.jpg"); Icon icon27 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\27.jpg");
+    Icon pic3 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\yui.jpg");
 
     //puzzle set 4
-    Icon icon28 = new ImageIcon("./src/res/images/Game1/28.jpg"); Icon icon29 = new ImageIcon("./src/res/images/Game1/29.jpg"); Icon icon30 = new ImageIcon("./src/res/images/Game1/30.jpg");
-    Icon icon31 = new ImageIcon("./src/res/images/Game1/31.jpg"); Icon icon32 = new ImageIcon("./src/res/images/Game1/32.jpg"); Icon icon33 = new ImageIcon("./src/res/images/Game1/33.jpg");
-    Icon icon34 = new ImageIcon("./src/res/images/Game1/34.jpg"); Icon icon35 = new ImageIcon("./src/res/images/Game1/35.jpg"); Icon icon36 = new ImageIcon("./src/res/images/Game1/36.jpg"); 
-    Icon pic4 = new ImageIcon("./src/res/images/Game1/pika.jpg");
+    Icon icon28 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\28.jpg"); Icon icon29 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\29.jpg"); Icon icon30 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\30.jpg");
+    Icon icon31 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\31.jpg"); Icon icon32 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\32.jpg"); Icon icon33 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\33.jpg");
+    Icon icon34 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\34.jpg"); Icon icon35 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\35.jpg"); Icon icon36 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\36.jpg"); 
+    Icon pic4 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\pika.jpg");
 
     //puzzle set 5
-    Icon icon37 = new ImageIcon("./src/res/images/Game1/37.jpg"); Icon icon38 = new ImageIcon("./src/res/images/Game1/38.jpg"); Icon icon39 = new ImageIcon("./src/res/images/Game1/39.jpg");
-    Icon icon40 = new ImageIcon("./src/res/images/Game1/40.jpg"); Icon icon41 = new ImageIcon("./src/res/images/Game1/41.jpg"); Icon icon42 = new ImageIcon("./src/res/images/Game1/42.jpg");
-    Icon icon43 = new ImageIcon("./src/res/images/Game1/43.jpg"); Icon icon44 = new ImageIcon("./src/res/images/Game1/44.jpg"); Icon icon45 = new ImageIcon("./src/res/images/Game1/45.jpg");
-    Icon pic5 = new ImageIcon("./src/res/images/Game1/cat.jpg");
+    Icon icon37 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\37.jpg"); Icon icon38 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\38.jpg"); Icon icon39 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\39.jpg");
+    Icon icon40 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\40.jpg"); Icon icon41 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\41.jpg"); Icon icon42 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\42.jpg");
+    Icon icon43 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\43.jpg"); Icon icon44 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\44.jpg"); Icon icon45 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\45.jpg");
+    Icon pic5 = new ImageIcon("Pic-Puzzle-main\\src\\res\\images\\Game1\\cat.jpg");
 
     //Order of correct puzzle pieces
     Icon[] correctIconsPic1 = {icon9, icon8, icon7, icon6, icon5, icon4, icon3, icon2, icon1};
